@@ -1,6 +1,6 @@
-############################
-## Extrac values to point
-###########################
+############################################
+## Data prepare for Extrac values to point
+############################################
 
 # Library pckgs
 
@@ -29,14 +29,15 @@ variables_wc <- stack(list_worldclim)
 
 
 ## Crop
-wc_pe <- crop(variables_wc, PE)
+wc_pe <- crop (variables_wc, PE)
 
-## extract
+## Extract values from worldclim variables to ponit
+vals_wc <- extract(wc_pe, pontos)
+summary(vals_wc)
 
+## Write table
 
-## Write 
-
-write.table(pts, file = ".dados/wc_values.csv", col.names = TRUE, row.names=FALSE, na="", sep = ",")
+write.table(vals_wc, file = ".dados/wc_values.csv", col.names = TRUE, row.names=FALSE, na="", sep = ",")
 
 
 ## List inpe variables (altitude and slope) in the folder
@@ -51,9 +52,13 @@ variables_inpe<-stack(list_inpe)
 ## Crop
 inpe_pe <- crop(variables_inpe, PE)
 
-## Write 
+## Extract values from worldclim variables to ponit
+vals_inpe<- extract(inpe_pe, pontos)
+summary(vals_wc)
 
-write.table(pts, file = ".dados/inpe_values.csv", col.names = TRUE, row.names=FALSE, na="", sep = ",")
+## Write table
+
+write.table(vals_inpe, file = ".dados/inpe_values.csv", col.names = TRUE, row.names=FALSE, na="", sep = ",")
 
 
-
+########################### End
