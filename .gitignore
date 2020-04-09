@@ -2,3 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
+.tif
+.xls
+.data/
+.variables_worldclim/
+.variables_inpe/
+.shape_pe/

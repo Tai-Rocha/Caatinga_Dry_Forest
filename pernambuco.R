@@ -10,7 +10,7 @@ library(maptools)
 
 # Read csv input table
 
-pontos <- read.csv(file.choose(), header=T)
+pontos <- read.csv("./data/", sep = ",")
 
 
 ## Read and crop variables to Pernambuco state
