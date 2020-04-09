@@ -10,6 +10,8 @@
 .dbf
 .prj
 .data/
+.results/
+.tables/
 .variables_worldclim/
 .variables_inpe/
 .shape_pe/
