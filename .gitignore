@@ -4,6 +4,11 @@
 .Ruserdata
 .tif
 .xls
+.shp
+.sbx
+.shx
+.dbf
+.prj
 .data/
 .variables_worldclim/
 .variables_inpe/

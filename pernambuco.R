@@ -6,6 +6,7 @@
 
 library(raster)
 library(maptools)
+library(rgdal)
 
 # Read csv input table
 
