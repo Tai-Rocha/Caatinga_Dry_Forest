@@ -32,7 +32,7 @@ inpe_pe <- crop(variables_inpe, PE)
 plot(inpe_pe)
 
 
-## Extract values from worldclim variables to ponit
+## Extract values from inpe variables to ponit
 
 vals_inpe<- extract(inpe_pe, pontos[,-1])
 
@@ -51,7 +51,6 @@ list_worldclim<-list.files(path="./data/variables_worldclim/",
 
 ### Build a stack (one object with all layers) 
 variables_wc <- stack(list_worldclim)
-
 
 ## Crop
 wc_pe <- crop (variables_wc, PE)
