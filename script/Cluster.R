@@ -1,7 +1,6 @@
 #############################################################
-# Métricas de betadiversidade para Caatinga
-# Matrizes de distância e Cluster                            #
-# Tainá Rocha                                         #
+# Matrizes de distância e Cluster                           #
+# Author: Tainá Rocha                                       #
 ##############################################################
 
 # carregando pacotes
