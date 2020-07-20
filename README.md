@@ -1,6 +1,6 @@
 # Pernambuco
 
-This is a repository for analysis of 24 Caatinga sites. We're investigating the phytogeographical patterns within that geographical scale, determining the relative contribution of species turnover/nestedness to beta diversity composition.
+This is a repository for analysis of 24 Caatinga sites. We're investigating the phytogeographica patterns determining the relative contribution of species turnover/nestedness to beta diversity composition.
 
 We split script folders and subfolders as follow:
 
