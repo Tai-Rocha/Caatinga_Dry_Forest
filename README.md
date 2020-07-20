@@ -5,6 +5,9 @@ This is a repository for analysis of 24 Caatinga sites. We're investigating the 
 We split script folders and subfolders as follow:
 
 
+- exploratory: extract enviromental values in 24 points using INPE climatic and topographic data ( http://www.dpi.inpe.br/Ambdata/download.php ) i raster pckg         (https://www.rdocumentation.org/packages/raster/versions/3.3-7)
+
+
 - PCA_NMDS:
 
     - Data_Prepare_for_PCA: script to prepare input data to run PCA analysis.
