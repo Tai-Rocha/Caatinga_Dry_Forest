@@ -16,11 +16,13 @@ library(vegan)
 
 ## Read and Load data
 
-PCA_INPUT <- read.csv("./data/tables/input_data_prepare_for_PCA/Input_Final_PCA.csv", sep = ",", dec = ".")
+#PCA_INPUT <- read.csv("./data/tables/input_data_prepare_for_PCA/Input_Final_PCA.csv", sep = ",", dec = ".")
+
+PCA_INPUT <- read.csv("./data/tables/input_data_prepare_for_PCA/teste_pca_long.csv", sep = ",", dec = ".")
 
 ### standardize unit of variables to build PCA  
 
-pca_caatinga<-decostand(PCA_INPUT[1:23], method="standardize")
+#pca_caatinga<-decostand(PCA_INPUT[1:23], method="standardize")
 
 #write.table(wc_vals, './data/wc_vals_standardize.txt')
 
@@ -31,11 +33,38 @@ res.pca.caatinga <- prcomp(PCA_INPUT[1:23],  scale = TRUE)
 
 
 # Color individuals by groups
-fviz_pca_ind(res.pca.caatinga, label="none", habillage=PCA_INPUT$sitios)
+fviz_pca_ind (
+              res.pca.caatinga, 
+              select.ind = list(name = PCA_INPUT$id))
+
+###
+fviz_pca_ind(res.pca.caatinga,
+             label = "none",
+             habillage= PCA_INPUT$id,
+             geom = "point",
+             col.var = "coord")
+
+###
+fviz_pca_ind(res.pca.caatinga, 
+             label="none", 
+             habillage=PCA_INPUT$id,
+             palette = "Dark2")
+             
 
 
-p <- fviz_pca_ind(res.pca.caatinga, label="none", habillage=PCA_INPUT$sitios,
-                  addEllipses=TRUE, ellipse.level=0.95)
+
+              
+              
+
+
+p <- fviz_pca_ind(res.pca.caatinga, 
+                  label="none", 
+                  geom = c("point", "text"),
+                  geom.ind = c("point", "text"),
+                  habillage=PCA_INPUT$sitios,
+                  addEllipses=TRUE, 
+                  ellipse.level=0.95
+                 )
 print(p)
 
 # Change the color by groups, add ellipses
