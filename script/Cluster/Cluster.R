@@ -9,14 +9,15 @@ library(vegan)
 library(pvclust)
 
 
-#################### Clusters 
+# Clusters 
 
 #Aplicando boostrap pelo pvclust
 
-caatinga_matrix_pvclus_<- read.csv("./data/tables/Cluster_Input_pvclust.csv", sep = ",")
+caatinga_matrix_pvclus_<- read.csv("./data/tables/Cluster_Input/teste_pvclust_input.csv", sep = ",", dec= ".")
+
 caatinga_matrix_pvclus <- caatinga_matrix_pvclus_ [,-1]
 
-cluster.upgma.jac <-pvclust(caatinga_matrix_pvclus, method.hclust ="average", method.dist = "binary", nboot=1000)
+cluster.upgma.jac <-pvclust(caatinga_matrix_pvclus, method.hclust ="average", method.dist = "binary", nboot=10000)
 
 
 plot(cluster.upgma.jac, print.pv=c("si","au", "bp"), print.num=TRUE, float=0.01,
@@ -26,6 +27,11 @@ plot(cluster.upgma.jac, print.pv=c("si","au", "bp"), print.num=TRUE, float=0.01,
 #### To teste Find Clusters with High/Low P-values
 
 pvrect(cluster.upgma.jac, alpha=0.95) # it's ok for this data
+
+seplot(cluster.upgma.jac, identify=TRUE)
+
+####
+
 
 pvpick(x, alpha=0.95, pv="au", type="geq", max.only=TRUE)
 
@@ -38,33 +44,4 @@ pvrect(x, alpha=0.95, pv="au", type="geq", max.only=TRUE, border=NULL, ...)
 
 vals.dist.cof.jac<-cophenetic(cluster.upgma.jac) #cálculo da matriz cofenética
 cor(jaccard_vegan, vals.dist.cof.jac)    #coeficiente de correlação em si = -0.7893426
-
-
-
-#Carregando a planilha
-
-matrix_similaridade_caatinga_ <- read.csv("./data/tables/Cluster_Input_caatinga.csv", sep = ";")
-
-matrix_similaridade_caatinga <- matrix_similaridade_caatinga_[ ,-1]
-
-briofitas_simi <- betapart.core(matrix_similaridade)
-
-
-#### Jaccard index (VEGAN)
-
-jaccard_vegan <- betadiver(matrix_similaridade, "j")
-jaccard_vegan
-
-
-#### Sorense index (VEGAN)
-
-sorense_vegan <- betadiver(matrix_similaridade, "sor")
-sorense_vegan
-
-
-### CHAO index (VEGAN)
-
-chao_vegan <- betadiver(matrix_similaridade, "co")
-chao_vegan
-
 
