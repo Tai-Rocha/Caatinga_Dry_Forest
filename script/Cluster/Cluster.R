@@ -1,15 +1,12 @@
 #############################################################
-# Matrizes de distância e Cluster                           #
+# Cluster with 24 Caatinga Sites                            #
 # Author: Tainá Rocha                                       #
-##############################################################
+#############################################################
 
-# carregando pacotes
+# Library pckgs
 
 library(vegan)
-library(betapart)
-library(ggplot2)
 library(pvclust)
-library(betapart)
 
 
 #################### Clusters 
