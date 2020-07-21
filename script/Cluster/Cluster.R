@@ -33,14 +33,13 @@ seplot(cluster.upgma.jac, identify=TRUE)
 ####
 
 
-pvpick(x, alpha=0.95, pv="au", type="geq", max.only=TRUE)
-
-pvrect(x, alpha=0.95, pv="au", type="geq", max.only=TRUE, border=NULL, ...)
+#pvpick(x, alpha=0.95, pv="au", type="geq", max.only=TRUE)
+#pvrect(x, alpha=0.95, pv="au", type="geq", max.only=TRUE, border=NULL, ...)
 
 
 #conferindo se o cluster representa bem a matriz de distância.
-# cálculo do coeficiente de correlação cofenética
-# lembre-se sempre de relatar o valor do coeficiente. Na legenda da figura é uma boa opção.
+#cálculo do coeficiente de correlação cofenética
+#lembre-se sempre de relatar o valor do coeficiente. Na legenda da figura é uma boa opção.
 
 vals.dist.cof.jac<-cophenetic(cluster.upgma.jac) #cálculo da matriz cofenética
 cor(jaccard_vegan, vals.dist.cof.jac)    #coeficiente de correlação em si = -0.7893426
