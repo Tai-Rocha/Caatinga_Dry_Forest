@@ -18,6 +18,7 @@ matrix_similaridade_caatinga_ <- read.csv("./data/tables/Diversity_Input_betapar
 ######### Incidence-based pair-wise dissimilarities
 
 ## Jaccard
+
 jaccard_caatinga <- beta.pair(matrix_similaridade_caatinga_[,-1], index.family = "jaccard")
 
 ## Sorense
@@ -28,9 +29,9 @@ sorense_caatinga <- beta.pair(matrix_similaridade_caatinga_[,-1], index.family =
 
 ########### Write outputs
 
-##Jaccard
+## Jaccard
 
-write.table(jaccard_caatinga[["beta.jtu"]], "./results/Results_New/Diversity_indices/beta.pair_Jaccard_Sorense/Jaccard_beta.jtu.txt", dec = ".")
+write.csv(jaccard_caatinga[["beta.jtu"]], "./results/Results_New/Diversity_indices/beta.pair_Jaccard_Sorense/Jaccard_beta.jtu.txt", dec = ".")
 
 write.table(jaccard_caatinga[["beta.jne"]], "./results/Results_New/Diversity_indices/beta.pair_Jaccard_Sorense/Jaccard_beta.jne.txt", dec = ".")
 
