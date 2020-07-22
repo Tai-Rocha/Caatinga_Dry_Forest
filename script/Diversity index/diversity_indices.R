@@ -36,35 +36,3 @@ write.table(caatinga_simi[["max.not.shared"]], "./results/Results_New/Diversity_
 write.table(caatinga_simi[["min.not.shared"]], "./results/Results_New/Diversity_indices/betapart.core/beta.core_minNotShared.txt", dec = ".")
 
 
-
-
-####
-
-
-
-
-
-
-
-
-
-#### Jaccard index (VEGAN)
-
-data("sipoo")
-
-jaccard_vegan <- betadiver(matrix_similaridade_caatinga, "j")
-jaccard_vegan
-
-
-#### Sorense index (VEGAN)
-
-sorense_vegan <- betadiver(matrix_similaridade, "sor")
-sorense_vegan
-
-
-### CHAO index (VEGAN)
-
-chao_vegan <- betadiver(matrix_similaridade, "co")
-chao_vegan
-
-
