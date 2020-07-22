@@ -7,7 +7,7 @@
 ###############################################################
 
 
-### Library
+################# Library
 
 library(betapart)
 
@@ -62,3 +62,6 @@ write.table(beta.sim, "./results/Results_New/Diversity_indices/beta_pair_Jaccard
 write.table(beta.sne, "./results/Results_New/Diversity_indices/beta_pair_Jaccard_Sorense/Sorense_beta_sne.txt", dec = ".")
 
 write.table(beta.sor, "./results/Results_New/Diversity_indices/beta_pair_Jaccard_Sorense/Sorense_beta_sor.txt", dec = ".")
+
+
+########## End
