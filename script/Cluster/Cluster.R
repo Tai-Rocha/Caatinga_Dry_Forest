@@ -11,7 +11,7 @@ library(pvclust)
 
 # Clusters 
 
-#Aplicando boostrap pelo pvclust
+# Aplicando boostrap pelo pvclust
 
 caatinga_matrix_pvclus_<- read.csv("./data/tables/Cluster_Input/teste_pvclust_input.csv", sep = ",", dec= ".")
 
