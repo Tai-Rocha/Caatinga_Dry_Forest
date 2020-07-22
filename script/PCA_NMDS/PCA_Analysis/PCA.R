@@ -20,11 +20,6 @@ library(vegan)
 
 PCA_INPUT <- read.csv("./data/tables/input_data_prepare_for_PCA/teste_pca_long.csv", sep = ",", dec = ".")
 
-### standardize unit of variables to build PCA  
-
-#pca_caatinga<-decostand(PCA_INPUT[1:23], method="standardize")
-
-#write.table(wc_vals, './data/wc_vals_standardize.txt')
 
 ### PCA
 
