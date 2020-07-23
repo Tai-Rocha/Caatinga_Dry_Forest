@@ -27,6 +27,14 @@ jaccard_caatinga[["beta.jtu"]]
 jaccard_caatinga[["beta.jne"]]
 jaccard_caatinga[["beta.jac"]]
 
+
+### NMDs with Jaccard beta.jne (nestedness) and beta.jtu (turnover)
+
+beta.jne <- metaMDS(jaccard_caatinga[["beta.jne"]], distance = "bray", K=2, trymax = 20, engine= "monoMDS", autotransform = "F", plot = T) 
+
+beta.jtu <- metaMDS(jaccard_caatinga[["beta.jtu"]], distance = "bray", K=2, trymax = 20, engine= "monoMDS", autotransform = "F", plot = T)  
+
+
 ## Conversion outputs into a matrix (to save easily)
 
 beta.jtu <- as.matrix(jaccard_caatinga$beta.jtu)
@@ -45,7 +53,7 @@ write.csv(beta.jne, "./results/Results_New/Diversity_indices/beta_pair_Jaccard_S
 
 write.csv(beta.jac, "./results/Results_New/Diversity_indices/beta_pair_Jaccard_Sorense/Jaccard_beta_jac.csv", sep=",", dec = ".")
 
-## Sorense
+############################### Sorense ############################
 
 sorense_caatinga <- beta.pair(matrix_similaridade_caatinga_[,-1], index.family = "sorensen")
 
@@ -54,6 +62,14 @@ sorense_caatinga <- beta.pair(matrix_similaridade_caatinga_[,-1], index.family =
 beta.sim <- as.matrix(sorense_caatinga$beta.sim)
 beta.sne <- as.matrix(sorense_caatinga$beta.sne)
 beta.sor <- as.matrix(sorense_caatinga$beta.sor)
+
+
+### NMDS with beta.sne (nestedness) and beta.sim (turnover)
+
+beta.sne <- metaMDS(sorense_caatinga[["beta.sne"]], distance = "bray", K=2, trymax = 20, engine= "monoMDS", autotransform = "F", plot = T) 
+
+beta.sim <- metaMDS(sorense_caatinga[["beta.sim"]], distance = "bray", K=2, trymax = 20, engine= "monoMDS", autotransform = "F", plot = T) 
+
 
 ## Write Sorense Outputs
 
