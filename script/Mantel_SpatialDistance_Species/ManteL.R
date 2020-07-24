@@ -1,5 +1,5 @@
 ########################################
-## Dissimilaridade Mantel NMDS
+### Mantel test
 ### Author: Tainá Rocha
 ########################################
 
