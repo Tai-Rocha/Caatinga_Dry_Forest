@@ -1,11 +1,10 @@
 # Pernambuco
-
-This is a repository for analysis of 24 Caatinga sites. We're investigating the phytogeographica patterns determining the relative contribution of species turnover/nestedness to beta diversity composition.
+Repository for analysis of 24 Caatinga sites. We are investigating the phytogeographica patterns and species turnover/nestedness (beta diversity composition).
 
 We split script folders and subfolders as follow:
 
 
-- exploratory: extract enviromental values in 24 points using INPE climatic and topographic data ( http://www.dpi.inpe.br/Ambdata/download.php ) and raster pckg         (https://www.rdocumentation.org/packages/raster/versions/3.3-7)
+- Exploratory data analysis: extract enviromental values of 24 points using INPE climatic and topographic data ( http://www.dpi.inpe.br/Ambdata/download.php ). I      use raster pckg to do this analysis       (https://www.rdocumentation.org/packages/raster/versions/3.3-7)
 
 
 - PCA_NMDS:
