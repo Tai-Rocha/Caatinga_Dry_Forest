@@ -28,5 +28,5 @@ caatinga_imporatnce <- gdm.varImp(exFormat2a, geo = F, splines = NULL, knots = N
            outFile = NULL)
 
 ### Barplot
-barplot(sort(caatinga_imporatnce[[2]][,1], decreasing=T), space= 1.5, axisnames= T, font.sub=2, cex.names = 0.8)
+barplot(sort(caatinga_imporatnce[[2]][,1], decreasing=T), space= 1.5, axisnames= T, font.sub=2, cex.names = 0.3)
 
