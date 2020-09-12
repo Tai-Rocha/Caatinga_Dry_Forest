@@ -13,9 +13,73 @@ sppdata <- read.csv("./data/tables/New/GDM_INPUT/sppdata.csv")
 list_envs <- list.files("./data/Envs_caatinga/", full.names= T, pattern = "tif")
 caatinga_envs <-stack(list_envs)
 
-gdmTab.rast <- formatsitepair(sppdata, bioFormat=2, XColumn="Long",                                         YColumn="Lat", sppColumn="species",
-                              siteColumn="site", predData=caatinga_envs,
-                              sppFilter=3)
+
+### GDM Transformer (fit gdm using rasters)
+
+## Formatimg spp table and rater data 
+
+sitePairRast <- formatsitepair(sppdata, 
+                               bioFormat=2, 
+                               XColumn="Long",                                                         YColumn="Lat", 
+                               sppColumn="species",
+                               siteColumn="site", 
+                               predData=caatinga_envs,
+                               sppFilter=0)
+##remove NA values
+sitePairRast <- na.omit(sitePairRast)
+
+## fit raster GDM
+gdmRastMod <- gdm(sitePairRast, geo=TRUE)
+summary(gdmRastMod)
+
+##raster input, raster output
+transRasts <- gdm.transform(gdmRastMod, caatinga_envs)
+
+plot(transRasts)
+
+# map biological patterns
+rastDat <- sampleRandom(transRasts, 10000)  #radom points 
+pcaSamp <- prcomp(rastDat)
+plot(pcaSamp)
+
+# This funtion predicts biological distances between sites or times using a model object returned from gdm. Predictions between site pairs require a data frame containing the values of predictors for pairs of locations, formatted as follows: distance, weights, s1.X, s1.Y, s2.X, s2.Y, s1.Pred1, s1.Pred2, ..., s1.PredN, s2.Pred1, s2.Pred2, ..., s2.PredN.. Predictions of biological change through time require two raster stacks or bricks for environmental conditions at two time periods, each with a layer for each environmental predictor in the fitted model.
+
+pcaRast <- predict(transRasts, pcaSamp, index=1:3) 
+
+plot(pcaRast)
+
+
+# scale rasters
+pcaRast[[1]] <- (pcaRast[[1]]-pcaRast[[1]]@data@min) /
+  (pcaRast[[1]]@data@max-pcaRast[[1]]@data@min)*255
+plot(pcaRast)
+
+
+pcaRast[[2]] <- (pcaRast[[2]]-pcaRast[[2]]@data@min) /
+  (pcaRast[[2]]@data@max-pcaRast[[2]]@data@min)*255
+plot(pcaRast)
+
+pcaRast[[3]] <- (pcaRast[[3]]-pcaRast[[3]]@data@min) /
+  (pcaRast[[3]]@data@max-pcaRast[[3]]@data@min)*255
+plotRGB(pcaRast, r=1, g=2, b=3)
+
+writeRaster(pcaRast, "./results/New_11_setembro/GDM/Maps/Final_Dissimi_Predicted.tif")
+#################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 gdmTab.rast<-na.omit(gdmTab.rast)
 gdm.1 <- gdm(gdmTab.rast, geo=T)

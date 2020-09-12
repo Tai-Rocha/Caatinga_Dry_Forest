@@ -5,6 +5,7 @@
 ## Library
 
 library(gdm)
+library(raster)
 
 ## Read inputs (species_site table and enviromental table)
 sppdata <- read.csv("./data/tables/New/GDM_INPUT/sppdata.csv")
@@ -29,4 +30,5 @@ caatinga_imporatnce <- gdm.varImp(exFormat2a, geo = F, splines = NULL, knots = N
 
 ### Barplot
 barplot(sort(caatinga_imporatnce[[2]][,1], decreasing=T), space= 1.5, axisnames= T, font.sub=2, cex.names = 0.3)
+
 
