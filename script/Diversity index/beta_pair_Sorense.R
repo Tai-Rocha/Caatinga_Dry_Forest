@@ -48,11 +48,11 @@ write.table(beta.sor, "./results/New/Diversity/Sorense/Sorense_beta_sor.txt", de
 
 ## Estimates the jaccard and sorense or any other indices of beta diversity reviewed by Koleff et al. (2003). Alternatively, it finds the co-occurrence frequencies for triangular plots (Koleff et al. 2003).
 
-sorense2 <- betadiver(matrix_similaridade_caatinga_, method = "j")
+sorense2 <- betadiver(matrix_similaridade_caatinga_, method = "sor")
 sorense2
+plot(sorense2)
 
 sorense2 <- as.matrix(sorense2)
-
 write.csv(sorense2, "./results/New/Diversity/Sorense/Sorense_2.csv", sep=",", dec = ".")
 
 ## Computes 3 multiple-site dissimilarities accounting for the spatial turnover and the nestedness components of beta diversity, and the sum of both values. 
