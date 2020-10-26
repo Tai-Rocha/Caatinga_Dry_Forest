@@ -43,7 +43,25 @@ write.table(beta.sor, "./results/New/Diversity/Sorense/Sorense_beta_sor.txt", de
 
 #beta.sim <- metaMDS(sorense_caatinga[["beta.sim"]], ddistance = "bray", K=3, try=20 ,trymax = 100, engine= "monoMDS", autotransform = "F", plot = T) 
 
-############################################################### Do not run ################################################################################
+###########################################################################################################################################################
+
+
+## Estimates the jaccard and sorense or any other indices of beta diversity reviewed by Koleff et al. (2003). Alternatively, it finds the co-occurrence frequencies for triangular plots (Koleff et al. 2003).
+
+sorense2 <- betadiver(matrix_similaridade_caatinga_, method = "j")
+sorense2
+
+sorense2 <- as.matrix(sorense2)
+
+write.csv(sorense2, "./results/New/Diversity/Sorense/Sorense_2.csv", sep=",", dec = ".")
+
+## Computes 3 multiple-site dissimilarities accounting for the spatial turnover and the nestedness components of beta diversity, and the sum of both values. 
+
+sorense_3 <- beta.multi(matrix_similaridade_caatinga_[,-1], index.family="sorense")
+sorense_3
+
+write.list(sorense_3, "./results/New/Diversity/Sorense/Sorense_3.txt")
+
 
 ####### envifit Sorense beta.sne (nestedness)
 #### Read and load input for envfit function
