@@ -16,6 +16,16 @@ matrix_similaridade_caatinga_ <- read.csv("./data/tables/Old/Diversity_Input_bet
 
 caatinga_simi <- betapart.core(matrix_similaridade_caatinga_[,-1])
 
+write.list(caatinga_simi, "./results/general_statistics.txt")
+
+
+
+
+############# To test 
+TernaryPlot(
+  atip = caatinga_simi$a,
+  btip = caatinga_simi$St,
+  ctip = caatinga_simi$sumSi)
 ####### Write Results
 write.table(caatinga_simi[["sumSi"]], "./results/New/Diversity/beta.core_sumSI.txt", dec = ".")
 

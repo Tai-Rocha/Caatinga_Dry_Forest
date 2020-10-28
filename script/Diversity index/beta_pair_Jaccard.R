@@ -12,6 +12,7 @@
 library(betapart)
 library(vegan)
 library(erer)
+library(Ternary)
 
 ### Load Input data frame, where rows are sites and columns are species.
 
@@ -23,11 +24,26 @@ matrix_similaridade_caatinga_ <- read.csv("./data/tables/Old/Diversity_Input_bet
 
 jaccard_caatinga <- beta.pair(matrix_similaridade_caatinga_[,-1], index.family = "jaccard")
 
+write.list(jaccard_caatinga, "./results/jaccard.txt")
+
 ## See outputs
 
 jaccard_caatinga[["beta.jtu"]]
 jaccard_caatinga[["beta.jne"]]
 jaccard_caatinga[["beta.jac"]]
+
+######### PLOT ### To test 
+
+TernaryPlot(jaccard_caatinga$beta.jne)
+
+TernaryPlot(
+  atip = jaccard_caatinga$beta.jtu,
+  btip = jaccard_caatinga$beta.jne,
+  ctip = jaccard_caatinga$beta.jac)
+
+plot(density(jaccard_caatinga$beta.jtu))
+plot(density(jaccard_caatinga$beta.jne))
+plot(density(jaccard_caatinga$beta.jac))
 
 ## Conversion outputs into a matrix (to save easily)
 
