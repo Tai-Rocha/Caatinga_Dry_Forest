@@ -8,12 +8,12 @@ library(gdm)
 library(raster)
 
 ## Read inputs (species_site table and enviromental table)
-sppdata <- read.csv("./data/tables/New/GDM_INPUT/sppdata.csv")
+sppdata <- read.csv("./data/tables/New/GDM_INPUT/spp_data.csv")
 
-envtab <- read.csv("./data/tables/New/GDM_INPUT/envtab_all_lat_long.csv")
+envtab <- read.csv("./data/tables/New/GDM_INPUT/env_tab.csv")
 
 ## site xy spp list, table-table
-exFormat2a <- formatsitepair(sppdata, 2, XColumn="Long", YColumn="Lat", sppColumn="species", siteColumn="site", predData=envtab)
+exFormat2a <- formatsitepair(sppdata, 2, XColumn="LONG", YColumn="LAT", sppColumn="species", siteColumn="sites", predData=envtab)
 
 gdm_run <- gdm(exFormat2a, geo=TRUE, splines=NULL, knots=NULL)
 

@@ -8,7 +8,7 @@ library(gdm)
 library(raster)
 
 ## Read inputs (species_site table and enviromental table)
-sppdata <- read.csv("./data/tables/New/GDM_INPUT/sppdata.csv")
+sppdata <- read.csv("./data/tables/New/GDM_INPUT/spp_data.csv")
 
 list_envs <- list.files("./data/Envs_caatinga/", full.names= T, pattern = "tif")
 caatinga_envs <-stack(list_envs)
@@ -20,9 +20,9 @@ caatinga_envs <-stack(list_envs)
 
 sitePairRast <- formatsitepair(sppdata, 
                                bioFormat=2, 
-                               XColumn="Long",                                                         YColumn="Lat", 
+                               XColumn="LONG",                                                                                     YColumn="LAT", 
                                sppColumn="species",
-                               siteColumn="site", 
+                               siteColumn="sites", 
                                predData=caatinga_envs,
                                sppFilter=0)
 ##remove NA values
@@ -63,21 +63,9 @@ pcaRast[[3]] <- (pcaRast[[3]]-pcaRast[[3]]@data@min) /
   (pcaRast[[3]]@data@max-pcaRast[[3]]@data@min)*255
 plotRGB(pcaRast, r=1, g=2, b=3)
 
-writeRaster(pcaRast, "./results/New_11_setembro/GDM/Maps/Final_Dissimi_Predicted.tif")
+writeRaster(pcaRast, "./results/New/GDM/Maps/Final_Dissimi_Predicted.tif")
 #################################################################
-
-
-
-
-
-
-
-
-
-
-
-
-
+## NOT RUN
 
 
 
