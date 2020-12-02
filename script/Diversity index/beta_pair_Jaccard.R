@@ -23,8 +23,8 @@ matrix_similaridade_caatinga_ <- read.csv("./data/tables/Old/Diversity_Input_bet
 ## Computes 3 distance matrices accounting for the (i) turnover (replacement), (ii) nestedness-resultant component, and (iii) total dissimilarity (i.e. the sum of both components).
 
 jaccard_caatinga <- beta.pair(matrix_similaridade_caatinga_[,-1], index.family = "jaccard")
-
-write.list(jaccard_caatinga, "./results/jaccard.txt")
+plot(jaccard_caatinga$beta.jtu)
+write.list(jaccard_caatinga, "./results/New/Beta_divers/jaccard.txt")
 
 ## See outputs
 
@@ -32,9 +32,15 @@ jaccard_caatinga[["beta.jtu"]]
 jaccard_caatinga[["beta.jne"]]
 jaccard_caatinga[["beta.jac"]]
 
-######### PLOT ### To test 
 
-TernaryPlot(jaccard_caatinga$beta.jne)
+
+
+######### PLOT ### To test 
+ggtern(data = caatinga_simi,aes(x=jaccard_caatinga$beta.jtu, y=jaccard_caatinga$beta.jne z=jaccard_caatinga$beta.jac)) +
+  geom_point()
+
+
+TernaryPlot(jaccard_caatinga)
 
 TernaryPlot(
   atip = jaccard_caatinga$beta.jtu,
@@ -55,11 +61,11 @@ beta.jac <- as.matrix(jaccard_caatinga$beta.jac)
 
 ## Write Jaccard outputs
 
-write.csv(beta.jtu, "./results/New/Diversity/Jaccard/Jaccard_beta_jtu.csv", sep=",", dec = ".")
+write.csv(beta.jtu, "./results/New/Beta_divers/Jaccard_beta_jtu.csv", sep=",", dec = ".")
 
-write.csv(beta.jne, "./results/New/Diversity/Jaccard/Jaccard_beta_jne.csv",sep = ",", dec = ".")
+write.csv(beta.jne, "./results/New/Beta_divers/Jaccard_beta_jne.csv",sep = ",", dec = ".")
 
-write.csv(beta.jac, "./results/New/Diversity/Jaccard/Jaccard_beta_jac.csv", sep=",", dec = ".")
+write.csv(beta.jac, "./results/New/Beta_divers/Jaccard_beta_jac.csv", sep=",", dec = ".")
 
 ############################################ Do not Run###############################################################################################
 ## NMDs with Jaccard beta.jne (nestedness) and beta.jtu (turnover) 

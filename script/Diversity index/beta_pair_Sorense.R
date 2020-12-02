@@ -29,11 +29,11 @@ beta.sor <- as.matrix(sorense_caatinga$beta.sor)
 
 ## Write Sorense Outputs
 
-write.table(beta.sim, "./results/New/Diversity/Sorense/Sorense_beta_sim.txt", dec = ".")
+write.csv(beta.sim, "./results/New/Beta_divers/Sorense_beta_sim.csv", dec = ".")
 
-write.table(beta.sne, "./results/New/Diversity/Sorense/Sorense_beta_sne.txt", dec = ".")
+write.csv(beta.sne, "./results/New/Beta_divers/Sorense_beta_sne.csv", dec = ".")
 
-write.table(beta.sor, "./results/New/Diversity/Sorense/Sorense_beta_sor.txt", dec = ".")
+write.csv(beta.sor, "./results/New/Beta_divers/Sorense_beta_sor.csv", dec = ".")
 
 
 ############################################################### Do not run ################################################################################

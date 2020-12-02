@@ -7,16 +7,27 @@
 
 library(vegan)
 library(betapart)
+library(erer)
 
 # Input for "betapart.core" function is data frame, where rows are sites and columns are species. 
 
-matrix_similaridade_caatinga_ <- read.csv("./data/tables/Old/Diversity_Input_betapart/betapart_2.core.csv", sep = ",", dec = ".")
+matrix_similaridade_caatinga_ <- read.csv("./data/tables/New/beta_diversidade/betapart_input.csv", sep = ",", dec = ".")
 
 ## "betapart.core" function computes the basic quantities needed for computing the multiple-site beta diversity measures and pairwise dissimilarity matrices.
 
 caatinga_simi <- betapart.core(matrix_similaridade_caatinga_[,-1])
 
-write.list(caatinga_simi, "./results/general_statistics.txt")
+write.csv(caatinga_simi$sumSi, "./results/New/Beta_divers/sumSim_statistics.txt")
+
+write.csv(caatinga_simi$St, "./results/New/Beta_divers/ST_statistics.txt")
+
+write.csv(caatinga_simi$a, "./results/New/Beta_divers/a_statistics.txt")
+
+write.csv(caatinga_simi$shared, "./results/New/Beta_divers/shared_statistics.txt")
+
+write.csv(caatinga_simi$not.shared, "./results/New/Beta_divers/NOTshared_statistics.txt")
+
+
 
 
 
