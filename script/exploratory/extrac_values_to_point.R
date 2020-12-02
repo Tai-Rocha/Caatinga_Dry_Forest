@@ -10,10 +10,10 @@ library(raster)
 
 ### Load Points
 
-caatinga_pontos <- read.csv("./data/tables/caatinga_long_lat.csv", sep = ",", dec = ".")
+caatinga_pontos <- read.csv("./data/tables/New/vars_in_cood/vals_in_coord_input.csv", sep = ",", dec = ".")
 
 # remover registros duplicados
-dups.all <- duplicated(caatinga_pontos[, c('Longitude', 'Latitude')])
+dups.all <- duplicated(caatinga_pontos[, c('LAT', 'LONG')])
 caatinga_pontos_final <- caatinga_pontos[!dups.all, ]
 
 
@@ -25,7 +25,7 @@ envs <- stack(list_envs)
 
 # Extract values from point
 
-values_in_coord <- extract(envs, caatinga_pontos_final[,-1])
+values_in_coord <- extract(envs, caatinga_pontos[3:4])
 
-write.table(values_in_coord, "./data/tables/caatinga_values_in_coord.txt")
+write.table(values_in_coord, "./data/tables/New/vars_in_cood/caatinga_values_in_coord.txt")
 
