@@ -36,7 +36,7 @@ jaccard_caatinga[["beta.jac"]]
 
 
 ######### PLOT ### To test 
-ggtern(data = caatinga_simi,aes(x=jaccard_caatinga$beta.jtu, y=jaccard_caatinga$beta.jne z=jaccard_caatinga$beta.jac)) +
+ggtern(data = caatinga_simi,aes(x=jaccard_caatinga$beta.jtu, y=jaccard_caatinga$beta.jne, z=jaccard_caatinga$beta.jac)) +
   geom_point()
 
 

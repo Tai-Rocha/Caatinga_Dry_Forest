@@ -7,7 +7,7 @@
 
 library(vegan)
 library(betapart)
-library(erer)
+library(ggtern)
 
 # Input for "betapart.core" function is data frame, where rows are sites and columns are species. 
 
@@ -27,16 +27,15 @@ write.csv(caatinga_simi$shared, "./results/New/Beta_divers/shared_statistics.txt
 
 write.csv(caatinga_simi$not.shared, "./results/New/Beta_divers/NOTshared_statistics.txt")
 
-
-
-
-
-
 ############# To test 
 TernaryPlot(
-  atip = caatinga_simi$a,
-  btip = caatinga_simi$St,
+  atip = caatinga_simi$shared,
+  btip = caatinga_simi$not.shared,
   ctip = caatinga_simi$sumSi)
+
+
+ggtern(data = caatinga_simi,aes(x=caatinga_simi$a, y=caatinga_simi$St, z=caatinga_simi$sumSi)) +
+  geom_point()
 ####### Write Results
 write.table(caatinga_simi[["sumSi"]], "./results/New/Diversity/beta.core_sumSI.txt", dec = ".")
 
