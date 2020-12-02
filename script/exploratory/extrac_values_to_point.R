@@ -1,7 +1,6 @@
 ######################
 # Estudando os pontos
 #Author: Tainá Rocha
-#Date: 07 May 2020
 #####################
 
 ## Library
