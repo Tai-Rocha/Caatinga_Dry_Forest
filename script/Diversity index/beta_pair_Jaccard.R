@@ -12,44 +12,22 @@
 library(betapart)
 library(vegan)
 library(erer)
-library(Ternary)
 
 ### Load Input data frame, where rows are sites and columns are species.
 
-matrix_similaridade_caatinga_ <- read.csv("./data/tables/Old/Diversity_Input_betapart/betapart_2.core.csv", sep = ",", dec = ".")
+matrix_similaridade_caatinga_ <- read.csv("./data/tables/New/beta_diversidade/betapart_input.csv", sep = ",", dec = ".")
 
 
 ## Incidence-based pair-wise dissimilarities
 ## Computes 3 distance matrices accounting for the (i) turnover (replacement), (ii) nestedness-resultant component, and (iii) total dissimilarity (i.e. the sum of both components).
 
 jaccard_caatinga <- beta.pair(matrix_similaridade_caatinga_[,-1], index.family = "jaccard")
-plot(jaccard_caatinga$beta.jtu)
-write.list(jaccard_caatinga, "./results/New/Beta_divers/jaccard.txt")
 
 ## See outputs
 
 jaccard_caatinga[["beta.jtu"]]
 jaccard_caatinga[["beta.jne"]]
 jaccard_caatinga[["beta.jac"]]
-
-
-
-
-######### PLOT ### To test 
-ggtern(data = caatinga_simi,aes(x=jaccard_caatinga$beta.jtu, y=jaccard_caatinga$beta.jne, z=jaccard_caatinga$beta.jac)) +
-  geom_point()
-
-
-TernaryPlot(jaccard_caatinga)
-
-TernaryPlot(
-  atip = jaccard_caatinga$beta.jtu,
-  btip = jaccard_caatinga$beta.jne,
-  ctip = jaccard_caatinga$beta.jac)
-
-plot(density(jaccard_caatinga$beta.jtu))
-plot(density(jaccard_caatinga$beta.jne))
-plot(density(jaccard_caatinga$beta.jac))
 
 ## Conversion outputs into a matrix (to save easily)
 
@@ -81,7 +59,7 @@ jaccard_2
 
 jaccard_2 <- as.matrix(jaccard_2)
 
-write.csv(jaccard_2, "./results/New/Diversity/Jaccard/Jaccard_2.csv", sep=",", dec = ".")
+write.csv(jaccard_2, "./results/New/Beta_divers/Jaccard.csv", sep=",", dec = ".")
 
 ## Computes 3 multiple-site dissimilarities accounting for the spatial turnover and the nestedness components of beta diversity, and the sum of both values. 
 

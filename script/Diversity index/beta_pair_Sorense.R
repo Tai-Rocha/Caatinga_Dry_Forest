@@ -15,7 +15,7 @@ library(erer)
 
 ### Load Input data frame, where rows are sites and columns are species.
 
-matrix_similaridade_caatinga_ <- read.csv("./data/tables/Old/Diversity_Input_betapart/betapart_2.core.csv", sep = ",", dec = ".")
+matrix_similaridade_caatinga_ <- read.csv("./data/tables/New/beta_diversidade/betapart_input.csv", sep = ",", dec = ".")
 
 #### Dissimalarity Sorense
 
@@ -53,7 +53,7 @@ sorense2
 plot(sorense2)
 
 sorense2 <- as.matrix(sorense2)
-write.csv(sorense2, "./results/New/Diversity/Sorense/Sorense_2.csv", sep=",", dec = ".")
+write.csv(sorense2, "./results/New/Beta_divers/Sorense.csv", sep=",", dec = ".")
 
 ## Computes 3 multiple-site dissimilarities accounting for the spatial turnover and the nestedness components of beta diversity, and the sum of both values. 
 
