@@ -1,17 +1,19 @@
 #############################
-## GDM RUN
+## GDM Predictions 
 #############################
 
 ## Library
 
 library(gdm)
 library(raster)
+library(erer)
 
 ## Read inputs (species_site table and enviromental table)
 sppdata <- read.csv("./data/tables/New/GDM_INPUT/spp_data.csv")
 
-list_envs <- list.files("./data/Envs_caatinga/", full.names= T, pattern = "tif")
-caatinga_envs <-stack(list_envs)
+list_envs <- list.files("./data/Envs_GDM/", full.names= T, pattern = "tif")
+
+cristalino_envs <-stack(list_envs)
 
 
 ### GDM Transformer (fit gdm using rasters)
@@ -23,7 +25,7 @@ sitePairRast <- formatsitepair(sppdata,
                                XColumn="LONG",                                                                                     YColumn="LAT", 
                                sppColumn="species",
                                siteColumn="sites", 
-                               predData=caatinga_envs,
+                               predData=cristalino_envs,
                                sppFilter=0)
 ##remove NA values
 sitePairRast <- na.omit(sitePairRast)
@@ -32,8 +34,10 @@ sitePairRast <- na.omit(sitePairRast)
 gdmRastMod <- gdm(sitePairRast, geo=TRUE)
 summary(gdmRastMod)
 
+write.csv(gdmRastMod$explained, "./results/New/GDM/Map/gdmRastMod_explained.txt")
+
 ##raster input, raster output
-transRasts <- gdm.transform(gdmRastMod, caatinga_envs)
+transRasts <- gdm.transform(gdmRastMod, cristalino_envs)
 
 plot(transRasts)
 
@@ -63,7 +67,7 @@ pcaRast[[3]] <- (pcaRast[[3]]-pcaRast[[3]]@data@min) /
   (pcaRast[[3]]@data@max-pcaRast[[3]]@data@min)*255
 plotRGB(pcaRast, r=1, g=2, b=3)
 
-writeRaster(pcaRast, "./results/New/GDM/Maps/Final_Dissimi_Predicted.tif")
+writeRaster(pcaRast, "./results/New/GDM/Map/Final_Dissimi_Predicted.tif")
 #################################################################
 ## NOT RUN
 
