@@ -15,6 +15,7 @@ list_envs <- list.files("./data/Envs_GDM/", full.names= T, pattern = "tif")
 
 cristalino_envs <-stack(list_envs)
 
+plot(cristalino_envs)
 
 ### GDM Transformer (fit gdm using rasters)
 
@@ -33,8 +34,6 @@ sitePairRast <- na.omit(sitePairRast)
 ## fit raster GDM
 gdmRastMod <- gdm(sitePairRast, geo=TRUE)
 summary(gdmRastMod)
-
-write.csv(gdmRastMod$explained, "./results/New/GDM/Map/gdmRastMod_explained.txt")
 
 ##raster input, raster output
 transRasts <- gdm.transform(gdmRastMod, cristalino_envs)

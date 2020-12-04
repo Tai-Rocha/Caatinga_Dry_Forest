@@ -48,9 +48,25 @@ write.csv(beta.sor, "./results/New/Beta_divers/Sorense_beta_sor.csv", dec = ".")
 
 ## Estimates the jaccard and sorense or any other indices of beta diversity reviewed by Koleff et al. (2003). Alternatively, it finds the co-occurrence frequencies for triangular plots (Koleff et al. 2003).
 
-sorense2 <- betadiver(matrix_similaridade_caatinga_, method = "sor")
-sorense2
+sorense2 <- betadiver(matrix_similaridade_caatinga_)
 plot(sorense2)
+
+#range(sorense_caatinga - vegdist(matrix_similaridade_caatinga_[,-1], binary=TRUE))
+
+################
+
+## Raw data and plotting
+data(sipoo)
+m <- betadiver(sipoo)
+plot(m)
+## The indices
+betadiver(help=TRUE)
+## The basic Whittaker index
+d <- betadiver(sipoo, "w")
+## This should be equal to Sorensen index (binary Bray-Curtis in
+## vegan)
+range(d - vegdist(sipoo, binary=TRUE))
+
 
 sorense2 <- as.matrix(sorense2)
 write.csv(sorense2, "./results/New/Beta_divers/Sorense.csv", sep=",", dec = ".")
