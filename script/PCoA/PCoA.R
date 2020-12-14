@@ -12,17 +12,17 @@ library(factoextra)
 
 ## Read data 
 
-caatina_pcoa_input <- read.csv("./data/tables/Old/Diversity_Input_betapart/betapart_2.core.csv")
+caatina_pcoa_input <- read.csv("./data/tables/New/PcoA/PCoA_input.csv")
 
 ###  MAtrix Distance based on binary data
 
-caatinga_distance_banary <- dist(caatina_pcoa_input, method = "binary")
+caatinga_distance_banary <- dist(caatina_pcoa_input[,-1], method = "binary")
 
 ## PCoA
 
-caatina_pcoa_ape <- pcoa(caatinga_distance_banary, correction="none", rn=caatina_pcoa_input$X)
+caatina_pcoa_ape <- pcoa(caatinga_distance_banary, correction="none", rn=caatina_pcoa_input$sites)
 
-biplot(caatina_pcoa_ape, rn=caatina_pcoa_input$X, plot.axes = c(1,2), dir.axis1=1,
+biplot(caatina_pcoa_ape, rn=caatina_pcoa_input$sites, plot.axes = c(1,2), dir.axis1=1,
        dir.axis2=1, pch=25, main = "PCoA of binary distance")
 
 #Vegan

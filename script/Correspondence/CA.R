@@ -1,5 +1,8 @@
+#########################
+# Correspondece analysis 
+######################### 
 
-## Librarys
+# Library
 
 library(factoextra)
 library(FactoMineR)
@@ -8,11 +11,11 @@ library(FactoMineR)
 ## Read and Load data
 
 
-CA_INPUT <- read.csv("./data/tables/input_data_prepare_for_PCA/pca_long.csv", sep = ",", dec = ".")
+CA_INPUT <- read.csv("./data/tables/New/PcoA/pcoa_input.csv", sep = ",", dec = ".")
 
 # CA analysis 
 
-res.ca.caatinga <- CA(PCA_INPUT[1:23], graph = FALSE)
+res.ca.caatinga <- CA(CA_INPUT[,-1], graph = FALSE)
 
 print(res.ca.caatinga)
 
@@ -30,7 +33,7 @@ fviz_ca_row(res.ca.caatinga, repel = TRUE, title= "Correspondence analysis")
 fviz_ca (
   res.ca.caatinga, 
   title = "Correspondence",
-  select.ind = list(name = CA_INPUT$sitios))
+  select.ind = list(name = CA_INPUT[1]))
 
 ## Col
 
