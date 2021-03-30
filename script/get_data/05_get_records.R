@@ -6,14 +6,17 @@ library(dplyr)
 library(tidyverse)
 
 # reading final species list
-spp <- read.csv("./results/03_taxon_data_raw_check.csv")
+spp <- read.csv("./results/04_taxon_data_flora_check.csv")
 
-spp2 <- as.list(spp$species)
+spp2 <- unique(spp$species)
 
-test <- map(spnames)
-  
-ssp2 <- as.vector(spp2)
+records_list <- list()
 
+for (i in 1:length(spp2)) {
+  message(paste(i, "species"))
+  records_list[[i]] <- rspeciesLink(species = spp2,
+                                    Scope = "plants")
+}
 
 records <- rspeciesLink(dir = "./results/spp_records/",
                         filename = "records_specieslink",
@@ -21,5 +24,9 @@ records <- rspeciesLink(dir = "./results/spp_records/",
                         Scope = "plants")
 
 
-teste <- spnames[1:72374] %>%
-  map(rspeciesLink)
+for (i in 1:length(search_taxa)) {
+  message(paste(i, "species"))
+  flora_taxa[[i]] <- check_flora(search_taxa[i],
+                                 get_synonyms = FALSE,
+                                 infraspecies = TRUE)
+}
