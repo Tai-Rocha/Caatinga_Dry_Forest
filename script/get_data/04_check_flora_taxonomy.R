@@ -43,14 +43,21 @@ search_taxa <- suggest_taxa$species %>%
   unique() %>%
   na.omit()
 
+##
+
+search_taxa_2 <- search_taxa[1:5000]
+
+
+
 search_df <- data.frame(species = search_taxa,
                         search_id = 1:length(search_taxa))
 # 2. checking if the name exists in Brazilian Flora ####
 
 flora_taxa <- list()
-for (i in 1:length(search_taxa)) {
+##
+for (i in 1:length(search_taxa_2)) {
   message(paste(i, "species"))
-  flora_taxa[[i]] <- check_flora(search_taxa[i],
+  flora_taxa[[i]] <- check_flora(search_taxa_2[i],
                                  get_synonyms = FALSE,
                                  infraspecies = TRUE)
 }
