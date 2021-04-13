@@ -8,7 +8,7 @@
 
 library(dplyr)
 library(flora)
-library(Rocc)
+library(rocc)
 library(parallel)
 
 # reading file
