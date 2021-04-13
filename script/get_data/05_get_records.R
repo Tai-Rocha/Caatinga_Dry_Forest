@@ -1,14 +1,16 @@
 # Download species records
 # get from each database, then merge final results
 
-library(Rocc)
+#library(Rocc)
 library(dplyr)
 library(tidyverse)
 
 # reading final species list
 spp <- read.csv("./results/04_taxon_data_flora_check.csv")
 
-spp2 <- as.character(unique(spp$species))
+spp1 <- spp %>% filter(taxonomicStatus == "NOME_ACEITO")
+
+spp2 <- as.character(unique(spp1$species))
 
 #records <- rspeciesLink(dir = "results/spp_records/",
 #                        filename = "records_specieslink",
