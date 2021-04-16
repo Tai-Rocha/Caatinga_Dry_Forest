@@ -1,9 +1,9 @@
-#######################################################################################################
+##############################################################################################################################################
 ### Title: Data analysis of Caatinga Cristalino
 ### Author: Tainá Rocha
-### We are investigating the phytogeographical patterns and species turnover/nestedness (beta diversity composition).
+### We are investigating the phytogeographical patterns and species turnover/nestedness (beta diversity composition) in Caatinga dry tropics
 #### In progress
-#######################################################################################################
+##############################################################################################################################################
 
 #### Script folders structure as follow:
 
