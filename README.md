@@ -10,7 +10,7 @@
 - [x] Rocc worflow (https://github.com/liibre/Rocc) to get occurrence for Caatinga Cristalino .
 
 
-- [x]  Exploratory data analysis: extract enviromental values of 24 points using INPE climatic and topographic data ( http://www.dpi.inpe.br/Ambdata/download.php ). I      use raster pckg to do this analysis       (https://www.rdocumentation.org/packages/raster/versions/3.3-7)
+- [x]  Exploratory data analysis: extract enviromental values of 24 test points using INPE climatic and topographic data ( http://www.dpi.inpe.br/Ambdata/download.php ). I      use raster pckg to do this analysis       (https://www.rdocumentation.org/packages/raster/versions/3.3-7)
 
 - [ ]  GDM models
 
