@@ -4,7 +4,7 @@ library(rocc)
 library(rgdal)
 library(tools)
 
-# 1. loading shapefile w/ municipalities of the BHRD ####
+# 1. loading shapefile w/ municipalities of the Caatinga Cristalino ####
 muni <- readOGR("./data/shape/Final_Shape/drive-download-20210319T175953Z-001/mun_caatinga_cristalino.shp", encoding = "UTF-8")
 plot(muni)
 nomes_muni <- data.frame(muni = toTitleCase(as.character(muni@data$NOMEMUNICP)),
