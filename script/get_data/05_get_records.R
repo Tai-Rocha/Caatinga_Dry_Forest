@@ -36,6 +36,7 @@ lista_2 <- bind_rows(records_list)
 
 write.csv(lista_2, "final_2.csv", row.names = FALSE)
 
+write.list(records_list[5:7], "test_3.csv") # sample of complete list, just to run some test
 #j <- length(records_list)
 
 #for (j in 1:length(records_list)) {
