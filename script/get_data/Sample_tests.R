@@ -9,7 +9,7 @@ library(dplyr)
 
 sample_points <- readOGR("./data/shape/sample_test_spps.shp")
 cristalino <- readOGR("./data/shape/mun_caatinga_cristalino.shp")
-grid_5 <- readOGR("./data/shape/grid5km.shp")
+grid_5 <- readOGR("./data/shape/grid_5km.shp")
 
 #plot(grid_5); points(sample_table)
 
@@ -28,27 +28,32 @@ pontos_no_cristalino = st_intersection(cristalino_2, pontos)
 st_geometry(pontos_no_cristalino) = NULL
 head(pontos_no_cristalino)
 
+#write.csv(pontos_no_cristalino, "./antes_sf_points.csv")
+
 ########################################### Spatial Joint test ########################################### 
 ###########################################  using "sf" pckg   ########################################### 
 
 cristalino_points <- st_as_sf(pontos_no_cristalino, coords = c("LONGITUDE", "LATITUDE"), crs =4326)
 
-grid_5km <- st_as_sf(grid_5, crs =4326)
+#write.csv(cristalino_points, "./sf_points.csv")
+
+grid_sf_5km <- st_as_sf(grid_5)
 
 ## Verify the CRS for both objects
 st_crs(cristalino_points)
 
-st_crs(grid_5km)
+st_crs(grid_sf_5km)
 
 
-# Fiz CRS erro for the grid_5km object
+# CRS for grid_5km object
 
-st_crs(grid_5km) <- 4326
+#st_crs(grid_5km) <- 4326  
+
+#grid_5km_final <- as_Spatial(grid_5km) 
 
 ## Spatial Join
-join_test <- st_join(cristalino_points, grid_5km, join = st_within , suffix = c("decimalLon", "decimalLat"),
+join_test <- st_join(cristalino_points, grid_sf_5km, join = st_within , suffix = c("decimalLon", "decimalLat"),
         prepared = TRUE, left = TRUE)
-
 
 write.csv(join_test, "./join_test.csv")
 
