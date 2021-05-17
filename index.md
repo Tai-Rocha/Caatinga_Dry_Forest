@@ -1,4 +1,6 @@
 #### Script folders structure as follow:
+<img align="right" width="330" height="300" src="https://github.com/Tai-Rocha/Caatinga_Dry_Forest/raw/master/docs/Figs./Map_Cristalino_Caatinga.png"> 
+
 
 - [x] Rocc worflow (https://github.com/liibre/Rocc) to get occurrence for Caatinga Cristalino .
 
