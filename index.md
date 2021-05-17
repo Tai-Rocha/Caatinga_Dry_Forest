@@ -29,7 +29,9 @@ The Caatinga domain, in Brazil, harbors the largest continuous area of SDTF in t
 
 ### Preliminary Results 
 
-The results of the Generalized dissimilarity model (GDM) showed a power of explanation higher than 50 percent (56.8%) and predicted a greater ecological distance increasing observed compositional dissimilarity (Fig. 1  a). Also predict higher compositional dissimilarity when the observed compositional dissimilarity increases (Fig. 1b). A visualization of spatial pattern of dissimilarity is shown in  Figure 6, in which areas of similar colour are predicted to have similar floristic composition. Predictions for Petrolina sites (PE1 e PE2) show most difference compositions compared with others, i.e., major dissimilarities compared with other sites.
+
+The results of the Generalized dissimilarity model (GDM) showed a power of explanation higher than 50 percent (56.8%).
+A visualization of spatial pattern of dissimilarity is shown in  Figure 1, in which areas of similar colour are predicted to have similar floristic composition. Predictions for Petrolina sites (PE1 e PE2) show most difference compositions compared with others, i.e., major dissimilarities compared with other sites. Pedicted a greater ecological distance increasing observed compositional dissimilarity (Fig. 2 a) and higher compositional dissimilarity when the observed compositional dissimilarity increases (Fig. 2b). 
 
 <img src="https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/raw/gh-pages/fig/GDM_google_docs.png" width="500"> <img align="right" width="400" height="400" src="https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/raw/gh-pages/fig/GDM_old_Graphics.png" > 
 
