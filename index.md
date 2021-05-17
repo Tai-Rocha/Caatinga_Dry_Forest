@@ -1,15 +1,15 @@
 
 #### Script folders structure as follow:
 
-- [x] Rocc worflow (https://github.com/liibre/Rocc) to get occurrence for Caatinga Cristalino .
+- [x] [Rocc](https://github.com/liibre/Rocc) worflow  to get occurrence for Caatinga Cristalino .
 
 
-- [x]  Exploratory data analysis: extract enviromental values of 24 test points using INPE climatic and topographic data ( http://www.dpi.inpe.br/Ambdata/download.php ). I      use raster pckg to do this analysis       (https://www.rdocumentation.org/packages/raster/versions/3.3-7)
+- [x]  Exploratory data analysis: extract enviromental values of 24 test points using [INPE](http://www.dpi.inpe.br/Ambdata/download.php) climatic and topographic data . I      use raster pckg to do this analysis       (https://www.rdocumentation.org/packages/raster/versions/3.3-7)
 
 - [x]  GDM models. Ok for 24 sites test
 
 
-- [x]  PCA_NMD. Ok for 24 sites test
+- [x]  PCoA. Ok for 24 sites test
 
 
     - Data_Prepare_for_PCA: script to prepare input data to run PCA analysis.
