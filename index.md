@@ -1,36 +1,28 @@
 ## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/Tai-Rocha/Caatinga_Dry_Forest/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+#### Script folders structure as follow:
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+- [x] Rocc worflow (https://github.com/liibre/Rocc) to get occurrence for Caatinga Cristalino .
 
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- [x]  Exploratory data analysis: extract enviromental values of 24 test points using INPE climatic and topographic data ( http://www.dpi.inpe.br/Ambdata/download.php ). I      use raster pckg to do this analysis       (https://www.rdocumentation.org/packages/raster/versions/3.3-7)
 
-```markdown
-Syntax highlighted code block
+- [x]  GDM models. Ok for 24 sites test
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+- [x]  PCA_NMD. Ok for 24 sites test
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+    - Data_Prepare_for_PCA: script to prepare input data to run PCA analysis.
+    
+    - PCA_Analysis: scripts for PCA analysis in stats 3.6.2 pckg ( https://www.rdocumentation.org/packages/stats/versions/3.6.2/ ),and factoextra pckg                     (https://www.rdocumentation.org/packages/factoextra/versions/1.0.7)
+    
+    
+    
+    
+- [x]  Cluster:  cluster analysis using pvclust pck ( https://github.com/shimo-lab/pvclust ). Ok for 24 sites test
 
-[Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Tai-Rocha/Caatinga_Dry_Forest/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
 ### Support or Contact
 
