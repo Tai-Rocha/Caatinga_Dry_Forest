@@ -1,1 +1,6 @@
 theme: jekyll-theme-minimal
+logo: /docs/Figs./Map_Cristalino_Caatinga.png
+description: Cristalino Caatinga Forest beta diversity.
+show_downloads: true
+google_analytics:
+theme: jekyll-theme-minimal
