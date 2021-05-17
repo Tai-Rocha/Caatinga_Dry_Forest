@@ -34,7 +34,7 @@ The results of the Generalized dissimilarity model (GDM) showed a power of expla
 <img src="https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/raw/gh-pages/fig/GDM_google_docs.png" width="550">
 
 
-<img align="left" width="400" height="400" src="https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/raw/gh-pages/fig/GDM_old_Graphics.png" > 
+<img align="right" width="400" height="400" src="https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/raw/gh-pages/fig/GDM_old_Graphics.png" > 
 
 
 
