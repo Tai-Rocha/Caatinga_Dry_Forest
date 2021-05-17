@@ -1,9 +1,3 @@
----
-layout: default
----
-
-<img align="center" width="330" height="300" src="https://github.com/Tai-Rocha/Caatinga_Dry_Forest/raw/master/docs/Figs./Map_Cristalino_Caatinga.png"> 
-
 
 #### Script folders structure as follow:
 
