@@ -1,6 +1,6 @@
 title: Cristalino Caatinga Dry Forest beta diversity
 logo: "https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/raw/gh-pages/fig/Map_Caatinga_Cristalino.png"
-description: Cristalino Caatinga Forest beta diversity.
+description: Beta diversity and spatial analysis (GDM, PCoa, Cluster)
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-minimal
