@@ -1,30 +1,52 @@
-### Caatinga domain, the largest continuous dry tropical forest.
-##### Study authors: BRUNO COUTINHO KURTZ,  DIEGO MEIRELES MONTEIRO, MARINEZ F. SIQUEIRA AND TAINÁ ROCHA
-##### Codes and GitHub pages author: Tainá Rocha 
+## Caatinga domain, the largest continuous dry tropical forest.
+### Study authors: BRUNO COUTINHO KURTZ,  DIEGO MEIRELES MONTEIRO, MARINEZ F. SIQUEIRA AND TAINÁ ROCHA
+### Codes and GitHub pages author: Tainá Rocha 
 
 <p align="justify">Seasonally dry tropical forests (SDTF) are one the most threatened and least studied ecosystems in the world (e.g., Miles et al. 2006, Sunderland et al. 2015). They can be characterized as forests or woodlands that occur in regions experiencing low annual precipitation (500-1500 mm) with strongly seasonal rainfall (5-8 dry months), generally concentrated in the summer (Mooney et al. 1995, FAO 2001). At the beginning of the 21st-century, remnants of SDTF were estimated to cover approximately 1 million km2 globally, with more than half of that are located in South America. In general, those remnant areas are threatened by climate change, fragmentation, burning, conversion to agricultural uses, and demographic pressure (Miles et al. 2006). The Caatinga domain, in Brazil, harbors the largest continuous area of SDTF in the Neotropics (Särkinen et al. 2011, DryFlor 2016). That domain comprises an area of 912,529 km2, under the influence of a semiarid climate (Silva et al. 2017), encompassing all of the states in the northeastern region of Brazil, as well as a small portion of northern Minas Gerais State (southeast region of the country). Two major types of SDTF are floristically distinguishable within the de Caatinga domain: the vegetation growing on crystalline rock terrains (Crystalline Caatinga or Caatinga sensu stricto) and that growing on the sandy terrains of sedimentary basins (Sedimentary Caatinga; Moro et al. 2016, Queiroz et al. 2017). Besides those major vegetation types, there are stretches of tall deciduous and semi-deciduous forests, associated with greater water supplies and richer soils, including those derived from karstic deposits (Queiroz et al. 2017). </p>
 
-### MATERIALS AND METHODS
+We compared the woody component of Cistalino Caatinga areas. Our aim was to examine the phytogeographical patterns within that geographical scale, determining the relative contribution of species turnover/nestedness to beta diversity composition. Considering the high environmental heterogeneity within Caatinga SDTF, we would expect a predominance of species turnover in relation to species nestedness in the composition of beta diversity.
 
-#### Data source and analysis 
+## MATERIALS AND METHODS
 
-- [x] [Rocc](https://github.com/liibre/Rocc) worflow  to get occurrence for Caatinga Cristalino. [Code acess](https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/tree/master/script/get_data)
+### Data source and analysis 
 
+We first compared the environment for 22 areas of Cristalino Caatinga as a test, considering five topographic data and 19 climatic data from [INPE](http://www.dpi.inpe.br/Ambdata/download.php) and [wordclim v. 2.1](https://www.worldclim.org/data/worldclim21.html) respectively.
+Next, we expanded sampling areas by data collection from online biodiversity databases, as follow:
 
-- [x]  Exploratory data analysis: extract enviromental values of 24 test points using [INPE](http://www.dpi.inpe.br/Ambdata/download.php) climatic and topographic data. I use [raster](https://www.rdocumentation.org/packages/raster/versions/3.3-7) pacakge to do this analysis.  [Code acess](https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/tree/master/script/exploratory)     
+- [x] Survey of occurrences records by counties using [Rocc](https://github.com/liibre/Rocc) workflow. [Code acess](https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/tree/master/script/get_data)
 
-- [x]  GDM models. Ok for 24 sites test. [Code acess](https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/tree/master/script/GDM) .
+- [x] Create a spatial vector for the Caatinga Cristalino whole area with 10 km grid cells using Qgis(v.3.18). Each grid cell represents the sample site. 
 
+- [x] Spatial join between occurrence records with spatial vector of 10km grid cells using Qgis(v.3.18).
 
-- [x]  PCoA . Ok for 24 sites test. [Code acess](https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/blob/master/script/PCoA/PCoA.R) .
-
-
-    - Data_Prepare_for_PCA: script to prepare input data to run PCA analysis.
+- [x]  Extract enviromental values of occurrence records using [raster](https://www.rdocumentation.org/packages/raster/versions/3.3-7) . [Code acess](https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/tree/master/script/exploratory) 
     
-    - PCoA_Analysis: scripts for PCA analysis in [stats 3.6.2]( https://www.rdocumentation.org/packages/stats/versions/3.6.2/ ) and [factoextra](https://www.rdocumentation.org/packages/factoextra/versions/1.0.7) pacakges                    
+### Multivariate analysis
+
+#### Generalized Dissimilarity Modeling (GDM)
+
+- [x]  Inputs : two tables (spp_data and env_table)
+
+- [x]  GDM models for 22 sites test. [Code acess](https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/tree/master/script/GDM) .
+
+- [ ]  GDM models for expanded sample
+
+#### Principal Coordinates Analysis (PCoA): For florist matrix of 0 and 1
+
+- [x]  Data_Prepare_for_PCA: script to prepare input data to run PCA analysis.
+
+- [x]  PCoA . Ok for 22 sites test. [Code acess](https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/blob/master/script/PCoA/PCoA.R) .                
     
-        
-- [x]  Cluster analysis using [pvclust]( https://github.com/shimo-lab/pvclust ). Ok for 24 sites test. [Code acess](https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/tree/master/script/Cluster) .
+
+#### Cluster 
+
+- [x]  Ok for 22 sites test using [pvclust]( https://github.com/shimo-lab/pvclust ). [Code acess](https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/tree/master/script/Cluster) .
+
+#### Baselga metrics
+
+- [x] βSOR (overall beta diversity), 0k for 22 sites
+- [x] βsim (turnover), 0k for 22 sites
+- [x] βSNE (nestedness), 0k for 22 sites
 
 
 ### Preliminary Results 
