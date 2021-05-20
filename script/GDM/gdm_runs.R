@@ -6,16 +6,26 @@
 
 library(gdm)
 library(raster)
+library(unix)
+library(tidyverse)
+
+rlimit_as(1e384)
 
 ## Read inputs (species_site table and enviromental table)
-sppdata <- read.csv("./data/tables/New/GDM_INPUT/spp_data.csv")
+sppdata <- read.csv("./data/GDM_INPUTS/SPP_DATA.csv")
 
-envtab <- read.csv("./data/tables/New/GDM_INPUT/env_tab.csv")
+envs <- list.files("./data/GDM_INPUTS/5km/" , pattern = ".tif", full.names = T)
+
+envtab <- stack(envs)
 
 ## site xy spp list, table-table
-exFormat2a <- formatsitepair(sppdata, 2, XColumn="LONG", YColumn="LAT", sppColumn="species", siteColumn="sites", predData=envtab)
+exFormat2a <- formatsitepair(sppdata, 2, XColumn="LONG", YColumn="LAT", sppColumn="species", siteColumn="sites", predData=envtab, sppFilter = 3)
 
-gdm_run <- gdm(exFormat2a, geo=TRUE, splines=NULL, knots=NULL)
+exFormat2a_No_NA <- exFormat2a %>% drop_na()
+
+
+gdm_run <- gdm(exFormat2a_No_NA, geo=TRUE, splines=NULL, knots=NULL)
+
 
 plot(gdm_run)
 
