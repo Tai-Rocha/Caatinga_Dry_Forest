@@ -13,8 +13,8 @@ We compared the woody component of Cistalino Caatinga areas. Our aim was to exam
 We first compared the environment for 22 phytosociological surveys of Cristalino Caatinga as a test, considering five topographic data and 19 climatic data from [INPE](http://www.dpi.inpe.br/Ambdata/download.php) and [wordclim v. 2.1](https://www.worldclim.org/data/worldclim21.html) respectively.
 Next, we expanded sampling areas by data collection from online biodiversity databases, as follow:
 
-- [x] Survey of occurrences records by counties using [Rocc](https://github.com/liibre/Rocc) workflow. [Code acess](https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/tree/master/script/get_data)
-
+- [x] Survey of species list (and records) by Cristalino counties shapefile using [Rocc pckg](https://github.com/liibre/Rocc) workflow. [Code acess](https://github.com/Tai-Rocha/Caatinga_Dry_Forest.github.io/tree/master/script/get_data). Output: species list with occurrence (PS.:records occur beyond the Cristalino counties shapefile
+- [x] Select just records inside Cristalino counties shapefile, Qgis (Clip function of vector Geoprocessing tools)
 - [x] Create a spatial vector for the Caatinga Cristalino whole area with 10 km grid cells using Qgis(v.3.18). Each grid cell represents the sample site. 
 
 - [x] Spatial join between occurrence records with spatial vector of 10km grid cells using Qgis(v.3.18).
