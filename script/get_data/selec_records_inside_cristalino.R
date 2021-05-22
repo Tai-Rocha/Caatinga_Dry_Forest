@@ -21,4 +21,6 @@ gbif_cristalino <- gbif_shp[cristalino_shp, ]
 
 plot(gbif_cristalino)
 
+
+## Write new shapefile
 writeOGR(gbif_cristalino, "./data/shape/cristalino_records_arbu_arbo_gbif.shp", layer = "cristalino_records_arbu_arbo_gbif.shp", driver = "ESRI Shapefile")
