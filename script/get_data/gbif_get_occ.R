@@ -13,6 +13,7 @@
 #remotes::install_github("ropensci/taxize")
 #if(!require(pacman)) install.packages("pacman")
 #pacman::p_load(dplyr, purrr, readr, magrittr, rgbif)
+
 #The important part here is to use rgbif::occ_download with pred_in and to fill in your gbif credentials.
 
 library(dplyr)
@@ -26,16 +27,18 @@ library(taxize) # for get_gbifid_
 # fill in your gbif.org credentials. You need to create an account at gbif if you don't have it.
 
 user <- "tai_rocha_013" # your gbif.org username
-pwd <- "ohmydog13" # your gbif.org password
+pwd <- "" # your gbif.org password
 email <- "taina013@gmail.com" # your email
 
 #############################################################################
 #oc <- read.csv("./data/registros/spp_Gualaxo/list_spp_gualaxo.csv", sep = ';')
 #names(oc)
 
+spps <- read_csv("./data/tables/pre_inputs/spps_arbusto_arboreo.csv")
+
 gbif_taxon_keys <-
-  read.csv("./data/registros/spp_Gualaxo/list_spp_gualaxo.csv", sep = ';') %>% #For an file with a list of spp names
-  pull(ï..spp) %>% #Specify the column from the list
+  read.csv("./data/tables/pre_inputs/spps_arbusto_arboreo.csv", sep = ',') %>% #For an file with a list of spp names
+  pull(spp_filter) %>% #Specify the column from the list
   taxize::get_gbifid_(method="backbone") %>% # match names to the GBIF backbone to get taxonkeys
   imap(~ .x %>% mutate(original_sciname = .y)) %>% # add original name back into data.frame
   bind_rows() %T>% # combine all data.frames into one
@@ -49,7 +52,7 @@ gbif_taxon_keys <-
 
 
 # use matched gbif_taxon_keys from above
-occ_download(
+spp_lista <- occ_download(
   pred_in("taxonKey", gbif_taxon_keys),
   pred_in("basisOfRecord", c('PRESERVED_SPECIMEN')),
   #pred("geometry","POLYGON((-43.86 -17.57, -43.88 -21.49, -39.79 -19.86, -39.46 -17.98, -43.86
