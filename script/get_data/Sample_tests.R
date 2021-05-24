@@ -83,3 +83,81 @@ write.csv(join_test, "./join_test.csv")
 
 #o = overlay(pts, polys)
 #pts@data = cbind(pts@data, polys[o,])
+
+###############################################
+###############################################
+# Qgisprocessing tests 
+###############################################
+###############################################
+
+
+
+## Dissolve
+gbifdissolve <- qgis_run_algorithm(
+  "gdal:dissolve",
+  INPUT = gbif_sf,
+  #FIELD = gbif_sf$gbifID,
+  #GEOMETRY = gbif_sf$gbifID,
+  EXPLODE_COLLECTIONS = 0,
+  KEEP_ATTRIBUTES = 1,
+  COUNT_FEATURES = 1,
+  COMPUTE_AREA = 0,
+  COMPUTE_STATISTICS = 0,
+  STATISTICS_ATTRIBUTE = 0,
+  OPTIONS = 0,
+  OUTPUT = "./datadissolvegbif.shp",
+  .complete_output = FALSE
+)
+plot(gbifdissolve)
+## CLip
+gbifclip <- qgis_run_algorithm(
+  "gdal:clipvectorbypolygon",
+  INPUT = gbif_shp,
+  MASK = cristalino_shp,
+  #Dissolve = T,
+  OPTIONS = 1,
+  OUTPUT = "./clipgbif.shp",
+  #.complete_output = TRUE
+)
+
+
+
+
+qgis_show_help("native:joinattributesbylocation")
+
+qgis_joinattributesbylocation(
+  INPUT = qgisprocess::qgis_default_value(),   #All points shapes
+  JOIN = qgisprocess::qgis_default_value(),    #Shape with right extent (Caatinga- Cristalino)
+  PREDICATE = qgisprocess::qgis_default_value(), #
+  JOIN_FIELDS = qgisprocess::qgis_default_value(),
+  METHOD = qgisprocess::qgis_default_value(),
+  DISCARD_NONMATCHING = qgisprocess::qgis_default_value(),
+  PREFIX = qgisprocess::qgis_default_value(),
+  OUTPUT = qgisprocess::qgis_default_value(),
+  NON_MATCHING = qgisprocess::qgis_default_value(),
+  .complete_output = TRUE)
+
+
+
+
+
+#qgis_show_help("native:buffer")
+#print(qgis_algorithms(), n=604)
+
+qgis_configure()
+qgis_algorithms()
+options(qgisprocess.path = "path/to/qgis_process")
+
+input <- sf::read_sf(system.file("shape/nc.shp", package = "sf"))
+result <- qgis_run_algorithm(
+  "native:buffer",
+  INPUT = input,
+  DISTANCE = 1,
+  DISSOLVE = TRUE,
+  .quiet = TRUE
+)
+
+output_sf <- sf::read_sf(qgis_output(result, "OUTPUT"))
+plot(sf::st_geometry(output_sf))
+
+
