@@ -1,10 +1,11 @@
 # Script to check taxonomy
-
 # Check routine:
 # get synonyms from Flora 2020
 # 1. Flora 2020
 # 2. Kew - World Checklist of Vascular Plants
 # 3. TNRS - Taxonomic Name Resolution Service
+## 4.02 R version
+
 
 library(dplyr)
 library(flora)

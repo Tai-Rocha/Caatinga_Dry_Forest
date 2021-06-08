@@ -4,7 +4,9 @@
 ###                     USING A LIST OF KNOWN NAMES OF SPECIES               ###
 ###https://data-blog.gbif.org/post/downloading-long-species-lists-on-gbif/   ###
 ###                                                                          ###
-###                Modified by Tainá Rocha                                   ###
+###                Modified by Tainá Rocha 
+###                    4.02 R version
+###
 ###                         12 April 2021                                    ###
 ###                                                                          ###
 ################################################################################
