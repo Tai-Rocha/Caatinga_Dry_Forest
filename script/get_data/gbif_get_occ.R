@@ -19,7 +19,6 @@
 #The important part here is to use rgbif::occ_download with pred_in and to fill in your gbif credentials.
 
 library(logr)
-library(rdtLite)
 library(dplyr)
 library(purrr)
 library(readr)
