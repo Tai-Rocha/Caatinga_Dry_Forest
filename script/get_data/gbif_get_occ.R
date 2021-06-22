@@ -38,7 +38,7 @@ email <- "taina013@gmail.com" # your email
 
 ## Provenance Collector
 prov.init(
-  prov.dir = "./",
+  prov.dir = "./data/version_jun_2021/",
   overwrite = TRUE,
   snapshot.size = 0,
   hash.algorithm = "md5",
@@ -46,7 +46,7 @@ prov.init(
 
 
 ## Log collector
-log_open(file_name = "", logdir = TRUE, show_notes = TRUE, autolog = TRUE)
+log_open(file_name = "./data/version_jun_2021/", logdir = TRUE, show_notes = TRUE, autolog = TRUE)
 
 spps <- read_csv("./data/version_jun_2021/sps_arbus_arbor_check.csv")
 
