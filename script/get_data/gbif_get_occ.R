@@ -5,7 +5,7 @@
 ###https://data-blog.gbif.org/post/downloading-long-species-lists-on-gbif/   ###
 ###                                                                          ###
 ###                Modified by Tainá Rocha                                   ### 
-###                    4.1.0 R version                                         ###   
+###                    4.1.0 R version                                       ###   
 ###                                                                          ###  
 ###                   22 Jun 2021                                            ###
 ###                                                                          ###
@@ -18,6 +18,8 @@
 
 #The important part here is to use rgbif::occ_download with pred_in and to fill in your gbif credentials.
 
+library(logr)
+library(rdtLite)
 library(dplyr)
 library(purrr)
 library(readr)
@@ -33,6 +35,19 @@ pwd <- "_________" # your gbif.org password
 email <- "taina013@gmail.com" # your email
 
 #############################################################################
+
+## Provenance Collector
+prov.init(
+  prov.dir = "./",
+  overwrite = TRUE,
+  snapshot.size = 0,
+  hash.algorithm = "md5",
+  save.debug = FALSE)
+
+
+## Log collector
+log_open(file_name = "", logdir = TRUE, show_notes = TRUE, autolog = TRUE)
+
 spps <- read_csv("./data/version_jun_2021/sps_arbus_arbor_check.csv")
 
 gbif_taxon_keys <-
@@ -45,6 +60,9 @@ gbif_taxon_keys <-
   filter(matchtype == "EXACT" & status == "ACCEPTED") |> # get only accepted and matched names
   filter(kingdom == "Plantae") |> # remove anything that might have matched to a non-plant
   pull(usagekey) # get the gbif taxonkeys
+
+
+log_print(gbif_taxon_keys)
 
 # gbif_taxon_keys should be a long vector like this c(2977832,2977901,2977966,2977835,2977863)
 # !!very important here to use pred_in!!
@@ -64,3 +82,9 @@ spp_lista <- occ_download(
   format = "SIMPLE_CSV",
   user=user,pwd=pwd,email=email
 )
+
+log_print(spp_lista)
+
+log_close()
+
+prov.quit()
