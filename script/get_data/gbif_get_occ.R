@@ -5,7 +5,7 @@
 ###https://data-blog.gbif.org/post/downloading-long-species-lists-on-gbif/   ###
 ###                                                                          ###
 ###                Modified by Tainá Rocha                                   ### 
-###                    4.1 R version                                         ###   
+###                    4.1.0 R version                                         ###   
 ###                                                                          ###  
 ###                   22 Jun 2021                                            ###
 ###                                                                          ###
