@@ -38,10 +38,10 @@ email <- "taina013@gmail.com" # your email
 ## Log collector
 log_open(file_name = "./log_gbif", logdir = TRUE, show_notes = TRUE, autolog = TRUE)
 
-spps <- read_csv("./data/version_jun_2021/sps_arbus_arbor_check.csv")
+spps <- read_csv("./data/sp_list_version_jun_2021/sps_arbus_arbor_check.csv")
 
 gbif_taxon_keys <-
-  read.csv("./data/version_jun_2021/sps_arbus_arbor_check.csv", sep = ',') |>  #For an file with a list of spp names
+  read.csv("./data/sp_list_version_jun_2021/sps_arbus_arbor_check.csv", sep = ',') |>  #For an file with a list of spp names
   pull(scientific.name)  |>  #Specify the column from the list
   taxize::get_gbifid_(method="backbone") |> # match names to the GBIF backbone to get taxonkeys
   imap(~ .x |> mutate(original_sciname = .y)) |> # add original name back into data.frame
