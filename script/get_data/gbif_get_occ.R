@@ -4,10 +4,10 @@
 ###                     USING A LIST OF KNOWN NAMES OF SPECIES               ###
 ###https://data-blog.gbif.org/post/downloading-long-species-lists-on-gbif/   ###
 ###                                                                          ###
-###                Modified by Tainá Rocha 
-###                    4.02 R version
-###
-###                         12 April 2021                                    ###
+###                Modified by Tainá Rocha                                   ### 
+###                    4.1 R version                                         ###   
+###                                                                          ###  
+###                   22 Jun 2021                                            ###
 ###                                                                          ###
 ################################################################################
 
@@ -29,24 +29,21 @@ library(taxize) # for get_gbifid_
 # fill in your gbif.org credentials. You need to create an account at gbif if you don't have it.
 
 user <- "tai_rocha_013" # your gbif.org username
-pwd <- "" # your gbif.org password
+pwd <- "_________" # your gbif.org password
 email <- "taina013@gmail.com" # your email
 
 #############################################################################
-#oc <- read.csv("./data/registros/spp_Gualaxo/list_spp_gualaxo.csv", sep = ';')
-#names(oc)
-
-spps <- read_csv("./data/tables/pre_inputs/spps_arbusto_arboreo.csv")
+spps <- read_csv("./data/version_jun_2021/sps_arbus_arbor_check.csv")
 
 gbif_taxon_keys <-
-  read.csv("./data/tables/pre_inputs/spps_arbusto_arboreo.csv", sep = ',') %>% #For an file with a list of spp names
-  pull(spp_filter) %>% #Specify the column from the list
-  taxize::get_gbifid_(method="backbone") %>% # match names to the GBIF backbone to get taxonkeys
-  imap(~ .x %>% mutate(original_sciname = .y)) %>% # add original name back into data.frame
+  read.csv("./data/version_jun_2021/sps_arbus_arbor_check.csv", sep = ',') |>  #For an file with a list of spp names
+  pull(scientific.name)  |>  #Specify the column from the list
+  taxize::get_gbifid_(method="backbone") |> # match names to the GBIF backbone to get taxonkeys
+  imap(~ .x |> mutate(original_sciname = .y)) |> # add original name back into data.frame
   bind_rows() %T>% # combine all data.frames into one
-  readr::write_tsv(path = "all_matches.tsv") %>% # save as side effect for you to inspect if you want
-  filter(matchtype == "EXACT" & status == "ACCEPTED") %>% # get only accepted and matched names
-  filter(kingdom == "Plantae") %>% # remove anything that might have matched to a non-plant
+  readr::write_tsv(path = "all_matches.tsv") |> # save as side effect for you to inspect if you want
+  filter(matchtype == "EXACT" & status == "ACCEPTED") |> # get only accepted and matched names
+  filter(kingdom == "Plantae") |> # remove anything that might have matched to a non-plant
   pull(usagekey) # get the gbif taxonkeys
 
 # gbif_taxon_keys should be a long vector like this c(2977832,2977901,2977966,2977835,2977863)
