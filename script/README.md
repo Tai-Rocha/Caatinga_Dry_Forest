@@ -12,4 +12,4 @@
 ##### We use Provenance (rdlite package) and Log (logr package) for reproducibility purposes. It's important to note that rdlite, specifically, prov.init() function , works per section, and it needs to finished with prov.quit() function. If you try to run prov.init() more than one time without finish with prov.quit in the same  R section you'll get an error.
 
 
-##### Here, we adopted one R section per folder, once each folder makes one complete piece of the workflow.
+##### Here, we adopted one R section per folder, once each folder makes one complete piece of the workflow. Thus for each forder we used prov.init() and prov.quit() .
