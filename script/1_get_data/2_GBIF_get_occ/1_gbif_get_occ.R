@@ -18,7 +18,6 @@
 
 #The important part here is to use rgbif::occ_download with pred_in and to fill in your gbif credentials.
 
-library(logr)
 library(dplyr)
 library(purrr)
 library(readr)
@@ -34,9 +33,6 @@ pwd <- "_________" # your gbif.org password
 email <- "taina013@gmail.com" # your email
 
 #############################################################################
-
-## Log collector
-log_open(file_name = "./log_gbif", logdir = TRUE, show_notes = TRUE, autolog = TRUE)
 
 spps <- read_csv("./data/sp_list_version_jun_2021/sps_arbus_arbor_check.csv")
 
@@ -75,5 +71,4 @@ spp_lista <- occ_download(
 
 log_print(spp_lista)
 
-log_close()
-
+## Go two '2_csv_to shape.R' 

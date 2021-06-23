@@ -64,3 +64,5 @@ writeOGR(gbif_arbusto_arboreo,"./data/shape/gbif_arbusto_arboreo.shp", driver="E
 
 #shape_gbif <- readOGR("./gbif_arbusto_arboreo.dbf", "gbif_arbusto_arboreo") # I tried to read via rgdal, but not work
 
+
+## Go to 'Provenance_Log.R' to finhied this section 
