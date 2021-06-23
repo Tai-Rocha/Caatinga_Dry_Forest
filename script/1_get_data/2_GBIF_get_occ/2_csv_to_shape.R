@@ -14,13 +14,13 @@ library(dplyr)
 
 #### Read CSV
 
-gbif_arbusto_arboreo <- read.csv("./data/rgbif_arbusto_arboreo/0282703-200613084148143.csv", sep = "\t")
+gbif_arbusto_arboreo <- read.csv("./data/sp_list_version_jun_2021/0309500-200613084148143.csv", sep = "\t")
 
 
 ## Using relocate to set Long before Lat
-gbif_arbusto_arboreo <- gbif_arbusto_arboreo %>% relocate(decimalLongitude, .before = decimalLatitude )
 
-
+gbif_arbusto_arboreo <- gbif_arbusto_arboreo |>  
+                        relocate(decimalLongitude, .before = decimalLatitude )
 
 
 ## Get long and lat from your data.frame. Make sure that the order is in lon/lat.
@@ -42,12 +42,12 @@ xy_5 <- na_if(xy_4, "Rio de Janeiro Botanical Garden")
 xy_6 <- xy_5 %>% drop_na()
 
 ##
-gbif_spatial <- SpatialPointsDataFrame(coords = xy_6[-1,], data = xy_6[-1,],
+gbif_spatial <- SpatialPointsDataFrame(coords = gbif_arbusto_arboreo[22,23], data = gbif_arbusto_arboreo[22,23],
                                  proj4string = CRS("+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0"))
 
 
 
-
+class(gbif_arbusto_arboreo[22,23])
 # Convert a shape using sf pckg
 st_write(gbif_arbusto_arboreo, "gbif_arbusto_arboreo.shp") # I tried to save as .shp but the output was saved as .dbf 
 
