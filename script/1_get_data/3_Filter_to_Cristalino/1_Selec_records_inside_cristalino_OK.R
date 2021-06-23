@@ -6,8 +6,7 @@
 
 
 #Library
-library(logr)
-library(rdtLite)
+
 library(raster)
 library(rgdal)
 library(sf)
@@ -29,7 +28,7 @@ gbif_shp <- readOGR("./data/sp_list_version_jun_2021/gbif_raw_arbus_arbor.shp")
 
 gbif_cristalino <- gbif_shp[cristalino_shp, ]
 
-plot(gbif_cristalino)
+#plot(gbif_cristalino)
 
 log_print(gbif_cristalino)
 
@@ -37,6 +36,4 @@ log_print(gbif_cristalino)
 writeOGR(gbif_cristalino, "./data/sp_list_version_jun_2021/gbif_cristalino_arbus_arbor.shp", layer = "cristalino_records_arbu_arbo_gbif.shp", driver = "ESRI Shapefile")
 
 
-log_close()
-
-prov.quit()
+### Go To Provenac_Log script to finhed 
