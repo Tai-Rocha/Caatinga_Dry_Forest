@@ -1,7 +1,7 @@
 ##################################
 ## Prepare input for betapart
 ## R version 4.1
-## 24 June 2021
+## 26 June 2021
 ## Author: Tainá Rocha
 #################################
 
@@ -21,7 +21,7 @@ dbf_join <- foreign::read.dbf('./data/Shape_Join_CristalinoPoints_Grid10/join_Po
 
 ## Covert to tibble 
 
-tibble_join <- as.tibble(dbf_join)
+tibble_join <- as_tibble(dbf_join)
 
 tibble_join
 
