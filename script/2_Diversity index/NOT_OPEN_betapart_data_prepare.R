@@ -32438,6 +32438,6 @@ tab_final <- tab_2 |>
 
 log_print(tab_final)
 
-write_csv(tab_final, './data/betapart_Input/betapart_input.csv')
+write.table(tab_final, './data/betapart_Input/betapart_input.csv')
 
 
