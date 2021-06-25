@@ -11,6 +11,8 @@ library(tibble)
 library(tidyr)
 library(datapasta)
 library(readr)
+library(logr)
+library(rdtLite)
 
 
 ##Read
@@ -32433,6 +32435,8 @@ tab_final <- tab_2 |>
     values_from = Presence,
     values_fill = 0
   )
+
+log_print(tab_final)
 
 write_csv(tab_final, './data/betapart_Input/betapart_input.csv')
 
