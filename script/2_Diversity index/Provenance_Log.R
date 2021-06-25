@@ -1,9 +1,9 @@
-######################################################################
-## Provenance for Spatial Join Analysis (Cristalino records and Grid)
+###########################################
+## Provenance for diversity index analysis 
 ## R version 4.1
-## 24 June 2021
+## 26 June 2021
 ## Author Tainá Rocha
-#######################################################################
+###########################################
 
 
 library(logr)
@@ -19,7 +19,7 @@ prov.init(
   save.debug = FALSE)
 
 
-log_open(file_name = "./log_join", logdir = TRUE, show_notes = TRUE, autolog = TRUE)
+log_open(file_name = "./log_divers", logdir = TRUE, show_notes = TRUE, autolog = TRUE)
 
 
 

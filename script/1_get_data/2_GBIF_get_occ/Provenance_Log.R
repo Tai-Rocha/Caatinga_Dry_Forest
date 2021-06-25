@@ -1,8 +1,9 @@
-#############################
-##
-#############################
-
-
+###################################################
+## Provenance for get occurrence from gbif request  
+## R version 4.1
+## 23 June 2021
+## Author Tainá Rocha
+##################################################
 
 library(logr)
 library(rdtLite)
