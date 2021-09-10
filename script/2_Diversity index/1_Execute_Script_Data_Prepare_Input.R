@@ -13,4 +13,3 @@ source("./script/2_Diversity index/NOT_OPEN_betapart_data_prepare.R", echo = TRU
 
 
 
-## Got to script Provenance _Log.R to finish

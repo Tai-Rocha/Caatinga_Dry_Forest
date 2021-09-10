@@ -11,15 +11,21 @@
 
 library(betapart)
 library(vegan)
-library(erer)
+#library(erer)
 
 ### Load Input data frame, where rows are sites and columns are species.
 
-matrix_similaridade_caatinga_ <- read.csv("./data/tables/New/beta_diversidade/betapart_input.csv", sep = ",", dec = ".")
+matrix_similaridade_cristalino_ <- read.csv("./data/betapart_Input/betapart_input.csv", sep = " ")
+
+## Data Bruno compilance
+##raw_22 <- read.csv("./data/betapart_Input/betapart_22_raw.core.csv")
 
 #### Dissimalarity Sorense
 
-sorense_caatinga <- beta.pair(matrix_similaridade_caatinga_[,-1], index.family = "sorensen")
+sorense_caatinga <- beta.pair(matrix_similaridade_cristalino_[,-1], index.family = "sorensen")
+
+
+sorense_vegan <- betadiver(beta_input[,-1], "sor")
 
 ## Conversion outputs into a matrix (to save easily)
 
@@ -34,6 +40,13 @@ write.csv(beta.sim, "./results/New/Beta_divers/Sorense_beta_sim.csv", dec = ".")
 write.csv(beta.sne, "./results/New/Beta_divers/Sorense_beta_sne.csv", dec = ".")
 
 write.csv(beta.sor, "./results/New/Beta_divers/Sorense_beta_sor.csv", dec = ".")
+
+
+
+## All dataset.  Computes 3 multiple-site dissimilarities accounting for the spatial turnover and the nestedness components of beta diversity, and the sum of both values. 
+
+Sorense_all_dataset <- beta.multi(matrix_similaridade_cristalino_[,-1], index.family="sorense")
+Sorense_all_dataset
 
 
 ############################################################### Do not run ################################################################################
@@ -71,10 +84,27 @@ range(d - vegdist(sipoo, binary=TRUE))
 sorense2 <- as.matrix(sorense2)
 write.csv(sorense2, "./results/New/Beta_divers/Sorense.csv", sep=",", dec = ".")
 
+## Sample Tests...
 ## Computes 3 multiple-site dissimilarities accounting for the spatial turnover and the nestedness components of beta diversity, and the sum of both values. 
 
-sorense_3 <- beta.multi(matrix_similaridade_caatinga_[,-1], index.family="sorense")
-sorense_3
+sorense_3_100 <- beta.multi(beta_input[1:100,-1], index.family="sorense")
+sorense_3_100
+
+
+sorense_3_100_random <- beta.multi(beta_input[1100:1122,-1], index.family="sorense")
+sorense_3_100_random 
+
+
+sorense_3_22_random <- beta.multi(beta_input[2100:2122,-1], index.family="sorense")
+sorense_3_22_random
+
+
+sorense_3_22 <- beta.multi(raw_22[,-1], index.family="sorense")
+sorense_3_22
+
+
+
+
 
 write.list(sorense_3, "./results/New/Diversity/Sorense/Sorense_3.txt")
 
