@@ -7,52 +7,48 @@
 ###### Library
 
 library(raster)
-library(modleR)
+library(sp)
+library(tidyr)
 ###################################
 
 ### Load and stack enviromental variables for analysis
 
-list_envs <- list.files("./data/Envs_caatinga/", full.names = T, pattern = ".tif")
+list_envs <- list.files("data/Envs/2_5/", full.names = T, pattern = ".tif")
 
 envs <- stack(list_envs)
 
 ### Load the data (input log lat table)
 
-caatinga_points <- read.csv("./data/tables/input_data_prepare_for_PCA/setup_sdmdata_input_caatinga2.csv", sep=",", dec = ".")
+caatinga_points <- read.csv("./data/PCA/pre_PCA.csv", sep=",", dec = ".")
+
+points <- as.data.frame(caatinga_points)
+
+points_2 <- sp::SpatialPointsDataFrame(points[,-1], points[,-1])
+
+unique_points <- sp::remove.duplicates(points_2)
+
+coord <- as.data.frame(unique_points@coords)
+
+coordinates(coord) <- ~ decimalLon+ decimalLat
+
+## Extract envirometal values
+
+#values_in_coord <- extract(envs, points_cc[4:5])
+#write.csv(values_in_coord, "./data/tables/GDM_INPUT/env_values_in_coord.csv", sep = ",")
+
+values_in_coord_bi <- extract(envs, coord@coords, method= 'bilinear')
+
+write.csv(values_in_coord_bi, "./data/PCA/env_values_in_coord_bilinear.csv", sep = ",")
 
 
-#### setup_sdmdata
+#### Remove NA from
+input_pca <- readr::read_csv("./data/PCA/env_values_in_coord_bilinear.csv")
 
-setup_sdmdata(species_name = unique(caatinga_points[2]),
-              occurrences = caatinga_points[,3:4], 
-              predictors = envs, 
-              lon = "Longitude", 
-              lat = "Latitude", 
-              models_dir = "./results/cleanning", 
-              real_absences = NULL, 
-              buffer_type = NULL, 
-              dist_buf = NULL, 
-              env_filter = FALSE, 
-              env_distance = "centroid", 
-              buffer_shape = NULL, 
-              min_env_dist = NULL, 
-              min_geog_dist = NULL,
-              write_buffer = FALSE, 
-              seed = NULL, 
-              clean_dupl = TRUE, 
-              clean_nas = TRUE, 
-              clean_uni = TRUE, 
-              geo_filt = FALSE, 
-              geo_filt_dist = NULL, 
-              select_variables = FALSE, 
-              cutoff = 0.1, 
-              sample_proportion = 0.1, 
-              png_sdmdata = TRUE, 
-              n_back = 3, 
-              partition_type = c("bootstrap"), 
-              boot_n = 1, 
-              boot_proportion = 0.7, 
-              cv_n = NULL, 
-              cv_partitions = NULL)
+# noNA_pca <- na.omit(input_pca) # Not work 
 
+#noNA_pca <- input_pca[complete.cases(input_pca), ] # Not work 
 
+noNA_pca <- input_pca %>% drop_na()     
+noNA_pca 
+
+write.csv(noNA_pca, "./data/PCA/env_values_in_coord_bilinear_NONA.csv", sep = ",")

@@ -15,7 +15,11 @@ library(vegan)
 
 ### Load Input data frame, where rows are sites and columns are species.
 
-matrix_similaridade_cristalino_ <- read.csv("./data/betapart_Input/betapart_input.csv", sep = " ")
+matrix_similaridade_cristalino_ <- read.csv("data/betapart_Input/betapart_input.csv", sep = " ")
+
+betaa <- betadiver(matrix_similaridade_cristalino_)
+
+plot(betaa)
 
 ## Data Bruno compilance
 ##raw_22 <- read.csv("./data/betapart_Input/betapart_22_raw.core.csv")
@@ -35,11 +39,11 @@ beta.sor <- as.matrix(sorense_caatinga$beta.sor)
 
 ## Write Sorense Outputs
 
-write.csv(beta.sim, "./results/New/Beta_divers/Sorense_beta_sim.csv", dec = ".")
+write.csv(beta.sim, "results/Sorense_beta_sim.csv", dec = ".")
 
-write.csv(beta.sne, "./results/New/Beta_divers/Sorense_beta_sne.csv", dec = ".")
+write.csv(beta.sne, "results/Sorense_beta_sne.csv", dec = ".")
 
-write.csv(beta.sor, "./results/New/Beta_divers/Sorense_beta_sor.csv", dec = ".")
+write.csv(beta.sor, "results/Sorense_beta_sor.csv", dec = ".")
 
 
 

@@ -7,13 +7,14 @@
 
 library(tidyverse)
 library(vegan)
+library(ggvegan)
 
 
 # Vegan
 # The naming conventions vary. The one adopted here is traditional rather than truthful to priority. The function finds either quantitative or binary variants of the indices under the same name, which correctly may refer only to one of these alternatives For instance, the Bray index is known also as Steinhaus, Czekanowski and Sørensen index. The quantitative version of Jaccard should probably called Ružička index. The abbreviation "horn" for the Horn--Morisita index is misleading, since there is a separate Horn index. The abbreviation will be changed if that index is implemented in vegan (https://www.rdocumentation.org/packages/vegan/versions/2.4-2/topics/vegdist)
 
 
-caatinga_pcoa_vegan <- read.csv("./data/tables/New/PcoA/PCoA_input.csv")
+caatinga_pcoa_vegan <- read.csv("data/PCoA/pcoa_input.csv", sep = " ")
 
 ## To get the names of sites
 rownames(caatinga_pcoa_vegan) <- caatinga_pcoa_vegan[,1]
@@ -33,11 +34,34 @@ vegan_dist_caatinga <-vegdist(caatinga_pcoa_vegan,"bray")
 #caatinga_pcoa_vegan<- column_to_rownames (caatinga_pcoa_vegan, var = 'sites')
 #caatinga_pcoa_vegan
 
-pcoa_floristic_caatinga <- cmdscale(vegan_dist_caatinga, k=(nrow(caatinga_pcoa_vegan)-1), eig = TRUE) # a função cmdscale é para fazer a PCoA, k is axis numbers and eig is explaination
-pcoa_floristic_caatinga # eig is autovalues (eigenvalues), GOF is explaination percentage of axisi defined by K
+pcoa_stdf <- cmdscale(vegan_dist_caatinga, k=5, eig = TRUE)  # a função cmdscale é para fazer a PCoA, k is axis numbers and eig is explaination
 
-dev.new(title="PCoA of floristic")
+pcoa_stdf # eig is autovalues (eigenvalues), GOF is explaination percentage of axisi defined by K
 
+sum(pcoa_stdf$eig) # values x sum og eig values 
+
+pcoa_stdf$eig / sum(pcoa_stdf$eig) # Fraction of explanation for each axis 
+
+percent <- 100 * pcoa_stdf$eig / sum(pcoa_stdf$eig) # percentage 
+
+percent[1:5]  # percent of two frist axis 
+
+#dev.new(title="PCoA of floristic")
+
+################# Plot
+
+### GGplot
+pcoa_df = tibble(PCoA_1 = pcoa_stdf$points[,1], 
+                 PCoA_2 = pcoa_stdf$points[,2])
+
+
+p = ggplot(pcoa_df, aes(x = PCoA_1, y = PCoA_2)) + 
+  geom_point() +
+  labs(x= "PCoA_1= 3.6%", y="PCoA_2= 2.6%")
+p
+
+
+##################
 pcoa_flor <-ordiplot(scores(pcoa_floristic_caatinga, choices = c(1,2)), type = "t", main= "PCoA of floristic matrix")
 
 abline(h=0, lty=3)
