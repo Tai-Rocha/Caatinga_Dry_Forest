@@ -7,13 +7,15 @@
 # Library
 
 library(raster)
+library(sf)
+library(tidyverse)
+library(dplyr)
+library(foreign)
 
-##################
+##### Read 
+sp_lon_lat <- readr::read_csv("./data/GDM_inputs/SPP_DATA_id_v1.csv")
 
-### Load Points
-
-points_cc <- read.csv("data/sp_lon_lat/sp_lon_lat.csv", sep = ",", dec = ".")
-
+dplyr::glimpse(sp_lon_lat)
 # remover registros duplicados
 #dups.all <- duplicated(caatinga_pontos[, c('LAT', 'LONG')])
 #caatinga_pontos_final <- caatinga_pontos[!dups.all, ]
@@ -21,7 +23,7 @@ points_cc <- read.csv("data/sp_lon_lat/sp_lon_lat.csv", sep = ",", dec = ".")
 
 ##### Extract values from point (require a file in format long lat respectively to use extract funtion)
 
-list_envs <- list.files ("./data/Envs_GDM/5km/", full.names = T, pattern = ".tif")
+list_envs <- list.files ("./data/Envs/5min/", full.names = T, pattern = ".tif")
 
 envs <- stack(list_envs)
 
@@ -30,8 +32,8 @@ envs <- stack(list_envs)
 #values_in_coord <- extract(envs, points_cc[4:5])
 #write.csv(values_in_coord, "./data/tables/GDM_INPUT/env_values_in_coord.csv", sep = ",")
 
-values_in_coord_bi <- extract(envs, points_cc[4:5], method= 'bilinear')
+values_in_coord_bi <- extract(envs, sp_lon_lat[4:5], method= 'bilinear')
 
-write.csv(values_in_coord_bi, "./data/tables/GDM_INPUT/env_values_in_coord_bilinear.csv", sep = ",")
+write.csv(values_in_coord_bi, "./data/GDM_inputs/env_values_in_coord_bilinear.csv", sep = ",")
 
 

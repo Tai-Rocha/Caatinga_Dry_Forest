@@ -6,12 +6,12 @@
 
 library(gdm)
 library(raster)
-library(erer)
+#library(erer)
 
 ## Read inputs (species_site table and enviromental table)
-sppdata <- read.csv("./data/tables/New/GDM_INPUT/spp_data.csv")
+sppdata <- read.csv("./data/GDM_inputs/SPP_DATA_v2.csv")
 
-list_envs <- list.files("./data/Envs_GDM/", full.names= T, pattern = "tif")
+list_envs <- list.files("./data/Envs/5min", full.names= T, pattern = "tif")
 
 cristalino_envs <-stack(list_envs)
 
@@ -23,11 +23,13 @@ plot(cristalino_envs)
 
 sitePairRast <- formatsitepair(sppdata, 
                                bioFormat=2, 
-                               XColumn="LONG",                                                                                     YColumn="LAT", 
+                               #dist = "bray",
+                               XColumn="LONG",
+                               YColumn="LAT", 
                                sppColumn="species",
                                siteColumn="sites", 
                                predData=cristalino_envs,
-                               sppFilter=0)
+                               sppFilter=50)
 ##remove NA values
 sitePairRast <- na.omit(sitePairRast)
 

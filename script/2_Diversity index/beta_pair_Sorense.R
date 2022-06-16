@@ -17,6 +17,9 @@ library(vegan)
 
 matrix_similaridade_cristalino_ <- read.csv("data/betapart_Input/betapart_input.csv", sep = " ")
 
+#sor_dissimi <- vegdist(matrix_similaridade_cristalino_, method = "jaccard" )
+#class(sor_dissimi)
+
 betaa <- betadiver(matrix_similaridade_cristalino_)
 
 plot(betaa)
@@ -29,7 +32,10 @@ plot(betaa)
 sorense_caatinga <- beta.pair(matrix_similaridade_cristalino_[,-1], index.family = "sorensen")
 
 
-sorense_vegan <- betadiver(beta_input[,-1], "sor")
+sorense_vegan <- betadiver(matrix_similaridade_cristalino_[,-1], "sor")
+class(sorense_vegan)
+
+sor_dissimi_caatinga <- as.data.frame(sorense_vegan)
 
 ## Conversion outputs into a matrix (to save easily)
 
