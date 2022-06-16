@@ -12,7 +12,7 @@ library(raster)
 
 ### Load Points
 
-points_cc <- read.csv("./data/tables/GDM_INPUT/SPP_DATA_ID.csv", sep = ",", dec = ".")
+points_cc <- read.csv("data/sp_lon_lat/sp_lon_lat.csv", sep = ",", dec = ".")
 
 # remover registros duplicados
 #dups.all <- duplicated(caatinga_pontos[, c('LAT', 'LONG')])
