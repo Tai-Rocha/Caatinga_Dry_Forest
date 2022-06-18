@@ -68,3 +68,23 @@ plot(sitePairRast$distance, gdm.pred, xlab="Observed dissimilarity",
 
 lines(c(-1,2), c(-1,2))
 dev.off()
+
+
+# Other Statistics --------------------------------------------------------
+
+# GDM var importance and significance 
+
+var_importance <- gdm.varImp(sitePairRast, geo=TRUE, splines = NULL,
+           predSelect = FALSE, nPerm = 100, pValue=0.05, parallel = TRUE, cores = 2,
+           sampleSites = 1, sampleSitePairs = 1)
+
+erer::write.list(var_importance, "gdm_vars_impor_signi.csv")
+
+
+# GDM crossvalidation
+
+validation_GDM <- gdm.crossvalidation(sitePairRast, train.proportion=0.7, n.crossvalid.tests=5,
+                    geo=FALSE, splines=NULL, knots=NULL)
+
+erer::write.list(validation_GDM, "gdm_validation_crossvalid.csv")
+
