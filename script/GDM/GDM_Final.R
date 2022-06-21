@@ -69,6 +69,40 @@ plot(sitePairRast$distance, gdm.pred, xlab="Observed dissimilarity",
 lines(c(-1,2), c(-1,2))
 dev.off()
 
+# Trasform
+
+rastTrans <- gdm.transform(gdmRastMod, pres_cristalino_envs)
+
+# Remove NA
+
+rastDat <- na.omit(getValues(rastTrans))
+
+# Sample Random
+
+rastDat <- sampleRandom(rastTrans, 10000)
+
+# PCA
+
+pcaSamp <- prcomp(rastDat)
+
+# G space
+
+# Predict note the use of the 'index' argument
+
+pcaRast <- predict(rastTrans, pcaSamp, index=1:3)
+
+# scale rasters
+pcaRast[[1]] <- (pcaRast[[1]]-pcaRast[[1]]@data@min) /
+  (pcaRast[[1]]@data@max-pcaRast[[1]]@data@min)*255
+pcaRast[[2]] <- (pcaRast[[2]]-pcaRast[[2]]@data@min) /
+  (pcaRast[[2]]@data@max-pcaRast[[2]]@data@min)*255
+pcaRast[[3]] <- (pcaRast[[3]]-pcaRast[[3]]@data@min) /
+  (pcaRast[[3]]@data@max-pcaRast[[3]]@data@min)*255
+
+plotRGB(pcaRast, r=1, g=2, b=3)
+
+writeRaster(pcaRast, "results/GDM/Final/G_Space_Dissimi_GDM.tif")
+
 
 # Other Statistics --------------------------------------------------------
 
