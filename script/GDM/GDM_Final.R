@@ -1,8 +1,8 @@
 #############################
 # GDM 
-# Rveion
+# R version 4.2.1
 # GDM package version
-# OS
+# Linux 
 #############################
 
 library(gdm)
