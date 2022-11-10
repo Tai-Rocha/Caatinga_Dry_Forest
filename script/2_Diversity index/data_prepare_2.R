@@ -7,7 +7,7 @@ betapart_input = read.csv("data/betapart_Input/betapart_input.csv", sep = " ")
 
 betapart_input_2 = t(betapart_input[-1])
 
-beta_input_3 = betapart_input_2[,colSums(betapart_input_2) > 5]
+beta_input_3 = betapart_input_2[,colSums(betapart_input_2) > 4]
 
 beta_input_4 = t(beta_input_3)
 
