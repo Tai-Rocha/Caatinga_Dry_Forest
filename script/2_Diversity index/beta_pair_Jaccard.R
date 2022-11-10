@@ -106,3 +106,67 @@ write.list(jaccard_3, "./results/New/Diversity/Jaccard/Jaccard_3.txt")
 #write.table(scores_beta.jtu, "./results/Results_New/ENVFIT_NMDS/Jaccard/score_betaJTU_ENVFIT_NMDS.txt", dec = ".")
 
 ########## End
+
+### Not run
+
+################
+
+## Raw data and plotting
+data(sipoo)
+m <- betadiver(sipoo)
+plot(m)
+## The indices
+betadiver(help=TRUE)
+## The basic Whittaker index
+d <- betadiver(sipoo, "w")
+## This should be equal to Sorensen index (binary Bray-Curtis in
+## vegan)
+range(d - vegdist(sipoo, binary=TRUE))
+
+
+sorense2 <- as.matrix(sorense2)
+write.csv(sorense2, "./results/New/Beta_divers/Sorense.csv", sep=",", dec = ".")
+
+## Sample Tests...
+## Computes 3 multiple-site dissimilarities accounting for the spatial turnover and the nestedness components of beta diversity, and the sum of both values. 
+
+sorense_3_100 <- beta.multi(beta_input[1:100,-1], index.family="sorense")
+sorense_3_100
+
+
+sorense_3_100_random <- beta.multi(beta_input[1100:1122,-1], index.family="sorense")
+sorense_3_100_random 
+
+
+sorense_3_22_random <- beta.multi(beta_input[2100:2122,-1], index.family="sorense")
+sorense_3_22_random
+
+
+sorense_3_22 <- beta.multi(raw_22[,-1], index.family="sorense")
+sorense_3_22
+
+
+
+
+
+write.list(sorense_3, "./results/New/Diversity/Sorense/Sorense_3.txt")
+
+
+####### envifit Sorense beta.sne (nestedness)
+#### Read and load input for envfit function
+
+#envs.in.site <- read.csv("./data/tables/input_envifit/Input_Final_PCA.csv", sep = ",", dec = ".")
+
+#fit.beta.sne <- envfit(beta.sne, envs.in.site[1:23], perm = 999)
+
+#scores_beta.sne <-scores(fit.beta.sne, "vectors")
+
+#plot(beta.sne)
+#plot(fit.beta.sne)
+#plot(fit.beta.sne, p.max = 0.05, col = "red")
+
+### Write beta.SNE scores
+
+#write.table(scores_beta.sne, "./results/Results_New/Diversity_Index/ENVFIT_NMDS/Sorense/score_betaSNE_ENVFIT_NMDS.txt", dec = ".")
+
+########## End
