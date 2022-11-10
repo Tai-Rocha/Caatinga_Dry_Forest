@@ -5,7 +5,7 @@
 # and total dissimilarity (i.e. the sum of both components)   #
 # Sorense Index                                               #
 # Author: Tainá Rocha  
-# R version 4.2.1
+# R version 4.2.2
 ###############################################################
 ### Library
 library(betapart)
