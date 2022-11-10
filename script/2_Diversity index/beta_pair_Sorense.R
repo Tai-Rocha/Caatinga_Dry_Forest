@@ -43,7 +43,6 @@ write.csv(beta.sne, "results/Sorense_beta_sne.csv", dec = ".")
 write.csv(beta.sor, "results/Sorense_beta_sor.csv", dec = ".")
 
 
-
 ## All dataset.  Computes 3 multiple-site dissimilarities accounting for the spatial turnover and the nestedness components of beta diversity, and the sum of both values. 
 
 Sorense_all_dataset <- beta.multi(beta_matrix, index.family="sorense")
