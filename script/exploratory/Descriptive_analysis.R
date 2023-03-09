@@ -7,6 +7,14 @@
 
 library(dplyr)
 
+# SP cristalino in PA
+sp_pa = read.csv("data-raw/sp_cristalino_in_pa.csv")
+
+sp_pa_unique = distinct(sp_pa, species)
+
+write.csv(sp_pa_unique, "results/Descriptive_Baselga_GDM_2023/sp_in_pa.csv")
+
+
 # Read data
 
 gdm_sp = read.csv("data/GDM_inputs/SPP_DATA_v2.csv")
@@ -42,7 +50,6 @@ gdm_unique_species_lat_long = gdm_final_sp_sites_selected |>
   distinct(species, LONG, LAT)
 
 write.csv(gdm_unique_species_lat_long, "results/Descriptive_Baselga_GDM_2023/SPECIES_GDM_LAT_LONG.csv")
-
 
 ##### Test 2
 gdm_summary = gdm_sp |> 
